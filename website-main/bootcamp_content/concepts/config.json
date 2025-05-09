@@ -1,0 +1,275 @@
+[
+  {
+    "slug": "fundamentals",
+    "apex": true,
+    "title": "Fundamentals",
+    "description": "Understand the absolute basics and start building your confidence.",
+    "level": 1
+  },
+  {
+    "slug": "what-is-coding",
+    "parent": "fundamentals",
+    "title": "What is Coding?",
+    "description": "Before you start learning how to code, you need to understand what coding actually is!",
+    "level": 1
+  },
+  {
+    "slug": "comments",
+    "parent": "fundamentals",
+    "title": "Comments",
+    "description": "Annotate your code so your future self, and others, can understand it.",
+    "level": 1
+  },
+  {
+    "slug": "data-types",
+    "apex": true,
+    "title": "Data Types",
+    "description": "Data types are a fundamental concept in programming. They are used to represent different types of data.",
+    "level": 1
+  },
+  {
+    "slug": "strings",
+    "parent": "data-types",
+    "title": "Strings",
+    "description": "Strings are a fundamental concept in programming. They are used to represent text, words, and characters.",
+    "level": 1
+  },
+  {
+    "slug": "strings-using",
+    "parent": "strings",
+    "title": "Using Strings",
+    "description": "Learn how to use strings in your code.",
+    "level": 1
+  },
+  {
+    "slug": "strings-indexing",
+    "parent": "strings",
+    "title": "Indexing Strings",
+    "description": "Learn how to access a letter by its index",
+    "level": 5
+  },
+  {
+    "slug": "numbers",
+    "parent": "data-types",
+    "title": "Numbers",
+    "description": "Numbers are a fundamental concept in programming, both for anything involving maths, but also for day-to-day programming.",
+    "level": 1
+  },
+  {
+    "slug": "functions",
+    "apex": true,
+    "title": "Functions",
+    "description": "Master a fundamental building block of programs - functions.",
+    "level": 1
+  },
+  {
+    "slug": "functions-introduction",
+    "parent": "functions",
+    "title": "What are Functions?",
+    "description": "Learn what functions are in programming.",
+    "level": 1
+  },
+  {
+    "slug": "functions-using",
+    "parent": "functions",
+    "title": "Using Functions",
+    "description": "Learn how to use basic functions.",
+    "level": 1
+  },
+  {
+    "slug": "functions-using-arguments",
+    "parent": "functions",
+    "title": "Function Inputs",
+    "description": "Learn how to pass inputs (also known as 'arguments') into functions.",
+    "level": 1
+  },
+  {
+    "slug": "functions-defining",
+    "parent": "functions",
+    "title": "Defining Functions",
+    "description": "Learn about to define (or make) you're own functions",
+    "level": 4
+  },
+  {
+    "slug": "functions-defining-inside",
+    "parent": "functions",
+    "title": "Inside a function",
+    "description": "Learn about what happens inside a function",
+    "level": 4
+  },
+  {
+    "slug": "conditionals",
+    "parent": "flow-control",
+    "title": "Conditionals",
+    "description": "Learn about if statements.",
+    "level": 3
+  },
+  {
+    "slug": "else-statements",
+    "parent": "flow-control",
+    "title": "Else Statements",
+    "description": "Learn about else statements.",
+    "level": 3
+  },
+  {
+    "slug": "foreach",
+    "parent": "flow-control",
+    "title": "For each statements",
+    "description": "For each statements allow you to loop through a list or string.",
+    "level": 5
+  },
+  {
+    "slug": "lists",
+    "parent": "data-types",
+    "title": "Lists",
+    "description": "Lists allow us to store multiple pieces of data together in order.",
+    "level": 5
+  },
+  {
+    "slug": "variables",
+    "apex": true,
+    "title": "Variables",
+    "description": "Master a fundamental building block of programs - variables.",
+    "level": 2
+  },
+  {
+    "slug": "variables-introduction",
+    "parent": "variables",
+    "title": "What are Variables?",
+    "description": "Learn what variables are in programming.",
+    "level": 2
+  },
+  {
+    "slug": "variables-creating",
+    "parent": "variables",
+    "title": "Creating variables",
+    "description": "Learn how to create variables",
+    "level": 2
+  },
+  {
+    "slug": "variables-changing",
+    "parent": "variables",
+    "title": "Change variables",
+    "description": "Learn how to change variables",
+    "level": 2
+  },
+  {
+    "slug": "variables-unique-names",
+    "parent": "variables",
+    "title": "Unique Variable names",
+    "description": "Learn about how variable names have to be unique",
+    "level": 2
+  },
+  {
+    "slug": "variables-using",
+    "parent": "variables",
+    "title": "Using Variables",
+    "description": "Learn how to use variables as inputs to functions.",
+    "level": 2
+  },
+  {
+    "slug": "flow-control",
+    "apex": true,
+    "title": "Flow control",
+    "description": "Learn about different ways to control what the program does.",
+    "level": 2
+  },
+  {
+    "slug": "repeat",
+    "parent": "flow-control",
+    "title": "Using Repeat Blocks",
+    "description": "Learn how to use repeat blocks",
+    "level": 2
+  },
+  {
+    "slug": "index-access-chaining",
+    "parent": "lists",
+    "title": "Index Access Chaining",
+    "description": "Learn how to chain index accessors",
+    "level": 6
+  },
+  {
+    "slug": "lists-of-lists",
+    "parent": "lists",
+    "title": "Lists of Lists",
+    "description": "Learn how to to put lists inside of lists",
+    "level": 6
+  },
+  {
+    "slug": "dictionaries",
+    "parent": "data-types",
+    "title": "Dictionaries",
+    "description": "Learn everything about dictionaries",
+    "level": 7
+  },
+  {
+    "slug": "next-and-break",
+    "parent": "flow-control",
+    "title": "Next and Break",
+    "description": "Learn about the next and break keywords",
+    "level": 7
+  },
+  {
+    "slug": "indexed-by",
+    "parent": "flow-control",
+    "title": "Indexed By",
+    "description": "Learn about keeping track of the iteration you're on with indexed by.",
+    "level": 7
+  },
+  {
+    "slug": "objects",
+    "apex": true,
+    "title": "Objects",
+    "description": "Learn about objects - the building block of object-oriented programming.",
+    "level": 8
+  },
+  {
+    "slug": "objects-introduction",
+    "parent": "objects",
+    "title": "Introduction to Objects",
+    "description": "Grasp what objects are and why you would use them.",
+    "level": 8
+  },
+  {
+    "slug": "objects-instantiation",
+    "parent": "objects",
+    "title": "Creating Objects",
+    "description": "Learn how to use the new keyword to create objects",
+    "level": 8
+  },
+  {
+    "slug": "objects-properties",
+    "parent": "objects",
+    "title": "Object Properties",
+    "description": "Learn how to read and write properties from objects.",
+    "level": 8
+  },
+  {
+    "slug": "objects-in-functions",
+    "parent": "objects",
+    "title": "Using objects in functions",
+    "description": "Learn how we pass references to objects into functions.",
+    "level": 8
+  },
+  {
+    "slug": "html-basics",
+    "apex": true,
+    "title": "HTML Basics",
+    "description": "Learn the basics of HTML",
+    "level": 11
+  },
+  {
+    "slug": "css-basics",
+    "apex": true,
+    "title": "CSS Basics",
+    "description": "Learn the basics of CSS",
+    "level": 11
+  },
+  {
+    "slug": "javascript-basics",
+    "apex": true,
+    "title": "JavaScript Basics",
+    "description": "Learn the basics of JavaScript",
+    "level": 12
+  }
+]

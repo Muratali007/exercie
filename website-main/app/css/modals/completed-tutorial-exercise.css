@@ -1,0 +1,7 @@
+@import "../styles";
+
+.c-modal.m-completed-tutorial-exercise.c-modal.--cover {
+    & .btns {
+        @apply mt-40;
+    }
+}

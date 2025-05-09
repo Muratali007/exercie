@@ -1,0 +1,152 @@
+@import "../styles";
+
+#page-docs-index {
+    & .header {
+        @apply flex flex-col items-center;
+        @apply pt-40;
+
+        & h1 {
+            @apply text-h1 mb-12;
+        }
+        & p {
+            @apply text-20 leading-170;
+            @apply mb-28;
+        }
+        & .header-icon {
+            height: 80px;
+            width: 80px;
+            @apply mb-12;
+        }
+    }
+
+    & .using-section {
+        @apply flex md:flex-row flex-col-reverse mb-40;
+
+        & .info {
+            @apply flex-grow flex flex-col items-start;
+        }
+        & > .c-icon {
+            @apply md:h-[300px] h-[200px] md:w-[300px] w-[200px];
+            @apply md:ml-64 m-auto;
+        }
+        & h2 {
+            @apply text-h3 mb-8;
+        }
+        & p {
+            @apply text-p-large mb-20;
+        }
+    }
+
+    & .extra-sections {
+        @apply mb-64;
+        @apply flex flex-wrap;
+
+        & .section {
+            @apply flex-grow-0 flex-shrink-0;
+            @apply py-32;
+            @apply md:w-[50%] w-100;
+            @apply overflow-hidden relative;
+            --strokeColor: var(--borderColorDocsDashed);
+            --dashWeight: 1px;
+            --dashLength: 20px;
+            --gapPlusDashLength: 41px;
+            --hiddenDash: transparent, transparent var(--dashLength),
+                transparent var(--dashLength),
+                transparent var(--gapPlusDashLength),
+                transparent var(--gapPlusDashLength);
+            --visibleDash: var(--strokeColor),
+                var(--strokeColor) var(--dashLength),
+                transparent var(--dashLength),
+                transparent var(--gapPlusDashLength),
+                var(--strokeColor) var(--gapPlusDashLength);
+            --left: 0deg;
+            --top: 90deg;
+            --right: 180deg;
+            --bottom: 270deg;
+
+            background-size: var(--dashWeight) 100%, 100% var(--dashWeight),
+                var(--dashWeight) 100%, 100% var(--dashWeight);
+            background-position: 0 0, 0 0, 100% 0, 0 100%;
+            background-repeat: no-repeat;
+
+            &:nth-child(1),
+            &:nth-child(2) {
+                background-image: repeating-linear-gradient(
+                        var(--left),
+                        var(--hiddenDash)
+                    ),
+                    repeating-linear-gradient(var(--top), var(--hiddenDash)),
+                    repeating-linear-gradient(var(--right), var(--hiddenDash)),
+                    repeating-linear-gradient(var(--bottom), var(--visibleDash));
+            }
+            @screen md {
+                &:nth-child(1) {
+                    @apply pr-32;
+                    background-image: repeating-linear-gradient(
+                            var(--left),
+                            var(--hiddenDash)
+                        ),
+                        repeating-linear-gradient(var(--top), var(--hiddenDash)),
+                        repeating-linear-gradient(
+                            var(--right),
+                            var(--visibleDash)
+                        ),
+                        repeating-linear-gradient(
+                            var(--bottom),
+                            var(--visibleDash)
+                        );
+                }
+                &:nth-child(2) {
+                    @apply pl-32;
+                    background-image: repeating-linear-gradient(
+                            var(--left),
+                            var(--hiddenDash)
+                        ),
+                        repeating-linear-gradient(var(--top), var(--hiddenDash)),
+                        repeating-linear-gradient(
+                            var(--right),
+                            var(--hiddenDash)
+                        ),
+                        repeating-linear-gradient(
+                            var(--bottom),
+                            var(--visibleDash)
+                        );
+                }
+                &:nth-child(3) {
+                    @apply pr-32;
+                    background-image: repeating-linear-gradient(
+                            var(--left),
+                            var(--hiddenDash)
+                        ),
+                        repeating-linear-gradient(var(--top), var(--hiddenDash)),
+                        repeating-linear-gradient(
+                            var(--right),
+                            var(--visibleDash)
+                        ),
+                        repeating-linear-gradient(
+                            var(--bottom),
+                            var(--hiddenDash)
+                        );
+                }
+            }
+            & .c-icon.header-icon {
+                height: 64px;
+                @apply mb-16;
+            }
+            & h2 {
+                @apply text-h3 mb-8;
+            }
+            & p {
+                @apply text-p-large mb-16;
+            }
+        }
+    }
+
+    & .tracks-section {
+        @apply flex flex-col items-center;
+        @apply pb-40;
+        & h2 {
+            @apply text-h2 mb-64;
+        }
+    }
+}

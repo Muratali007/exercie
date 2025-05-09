@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["../../app/javascript/declarations", "jest"]
+  },
+  "includes": ["**/*.spec.ts", "**/*.spec.tsx"]
+}

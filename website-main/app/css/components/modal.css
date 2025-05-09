@@ -1,0 +1,92 @@
+.c-modal {
+    @apply fixed z-modal;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--modalBackgroundColor);
+
+    &.--cover {
+        @apply bg-backgroundColorB;
+
+        & .--modal-container {
+            @apply items-start;
+            overflow-y: auto;
+
+            & .--modal-content {
+                @apply py-48;
+                width: 100%;
+                /* min-height: 100%; */
+            }
+        }
+    }
+
+    & .--modal-container {
+        @apply fixed flex items-center justify-center z-modal;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        & .--close-button {
+            @apply fixed rounded-circle shadow-smZ1 bg-purpleDarker3;
+            @apply border-2 border-transparent;
+            @apply grid place-items-center z-modal;
+
+            cursor: pointer;
+            top: 48px;
+            right: 48px;
+            height: 64px;
+            width: 64px;
+
+            & .c-icon {
+                height: 32px;
+                width: 32px;
+                filter: var(--filter-FFFFFF);
+            }
+
+            &:hover {
+                @apply bg-wildBlueYonder;
+            }
+
+            &:active,
+            &:focus {
+                @apply bg-crayola;
+            }
+
+            &:focus {
+                @apply border-2 border-purpleDarker3;
+                @apply shadow-lavenderFocus;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                & .c-icon {
+                    filter: var(--dark-purple-filter);
+                }
+            }
+        }
+    }
+
+    &.--cover {
+        .--modal-content-inner {
+            @apply bg-backgroundColorA;
+            @apply shadow-lgZ1 rounded-8;
+            @apply px-48 py-32;
+            @apply overflow-hidden;
+        }
+    }
+    &:not(.--cover) {
+        & .--modal-content {
+            @apply bg-backgroundColorA;
+            @apply shadow-lgZ1 rounded-8;
+            @apply px-48 py-32;
+
+            max-height: 90%;
+            overflow-y: auto;
+        }
+    }
+}

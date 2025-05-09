@@ -1,0 +1,20 @@
+.c-mentor-discussion-widget {
+    & .--turn {
+        background: var(--backgroundColorExerciseStatusTagInProgress);
+        color: var(--textColorExerciseStatusTagInProgress);
+        @apply rounded-8;
+        @apply leading-150 font-semibold;
+        @apply py-6 px-12;
+    }
+
+    & .--comments {
+        @apply flex items-center;
+        @apply font-medium leading-170 text-textColor2;
+        & .c-icon {
+            height: 16px;
+            width: 16px;
+            @apply mr-12;
+            filter: var(--iconFilterMentorDiscussionWidget);
+        }
+    }
+}

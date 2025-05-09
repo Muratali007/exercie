@@ -1,0 +1,61 @@
+@import "../styles";
+
+.c-primary-reputation {
+    @apply rounded-100 shadow-sm bg-backgroundColorA;
+    @apply relative flex px-8 items-center justify-center;
+    @apply border-3 border-gradient;
+
+    @apply flex items-center justify-center flex-nowrap;
+    @apply text-16 leading-200 font-semibold;
+    @apply px-16 rounded-100;
+
+    /* These shouldn't change for theme */
+    color: #fbfcfe;
+
+    /* Gradient is reversed to normal */
+    background-image: linear-gradient(#130b43, #130b43),
+        linear-gradient(#9e00ff, #2200ff);
+
+    & .c-icon {
+        height: 24px;
+        width: 24px;
+        @apply mr-8;
+        filter: var(--primary-reputation-filter);
+    }
+    &.--small {
+        height: 30px;
+        @apply text-13 leading-100;
+        @apply px-8;
+
+        & .c-icon {
+            height: 16px;
+            width: 16px;
+        }
+    }
+    &.--large {
+        @apply leading-180 py-4;
+    }
+
+    & .--notification {
+        @apply absolute flex items-center justify-center;
+        @apply rounded-circle bg-backgroundColorA;
+        height: 21px;
+        width: 21px;
+        top: -7px;
+        right: -7px;
+        transform: scale(0);
+        transition: transform 0.5s ease-out;
+
+        &:after {
+            @apply rounded-circle;
+            background: var(--backgroundColorNotificationsCount);
+            content: "";
+            width: 15px;
+            height: 15px;
+        }
+
+        &.unseen {
+            transform: scale(1);
+        }
+    }
+}

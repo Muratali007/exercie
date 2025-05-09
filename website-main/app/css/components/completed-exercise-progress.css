@@ -1,0 +1,59 @@
+@import "../styles";
+
+.c-completed-exercise-progress {
+    & .progressed-concepts {
+        @apply flex flex-col;
+
+        & .concept {
+            @apply flex items-center;
+            @apply shadow-base rounded-8;
+            @apply mb-8 py-16 px-24;
+
+            & .c-concept-icon {
+                @apply mr-16;
+            }
+            & .name {
+                @apply text-18 leading-160 text-textColor2 font-semibold;
+            }
+            & .exercises {
+                @apply flex items-center;
+                @apply ml-auto;
+                & > not(:last-child) {
+                    @apply mr-12;
+                }
+            }
+        }
+    }
+    & .unlocks {
+        @apply flex;
+
+        & .unlocked-concepts + .unlocked-exercises {
+            @apply ml-24;
+        }
+        & .unlocked-concepts,
+        & .unlocked-exercises {
+            flex: 1 1 0px;
+            & h3 {
+                @apply flex items-center;
+                @apply text-h6;
+                @apply mb-12;
+                & .c-icon {
+                    height: 24px;
+                    width: 24px;
+                    @apply mx-8;
+                    @apply filter-textColor1;
+                }
+            }
+            & .list {
+                @apply flex flex-wrap gap-12;
+                .c-unlocked-concept {
+                    @apply m-0;
+                }
+
+                .c-exercise-widget {
+                    @apply w-auto;
+                }
+            }
+        }
+    }
+}

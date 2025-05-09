@@ -1,0 +1,17 @@
+en:
+  user_activities:
+    started_exercise:
+      1: >
+        You started <strong>%{exercise_title}</strong>
+
+    submitted_iteration:
+      1: >
+        You submitted <strong>Iteration %{iteration_idx}</strong>
+
+    completed_exercise:
+      1: >
+        You completed <strong>%{exercise_title}</strong>
+
+    published_exercise:
+      1: >
+        You published <strong>%{exercise_title}</strong>

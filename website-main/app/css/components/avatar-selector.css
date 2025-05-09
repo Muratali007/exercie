@@ -1,0 +1,67 @@
+@import "../styles";
+
+.c-avatar-selector {
+    @apply ml-auto;
+    @apply flex flex-col items-center;
+    & .--details {
+        @apply flex flex-col items-center;
+    }
+
+    & .c-avatar {
+        height: 128px;
+        width: 128px;
+        @apply mb-24;
+        cursor: pointer;
+        @apply shadow-xsZ1;
+    }
+    & h2 {
+        @apply text-h5 mb-12;
+        @apply text-center;
+    }
+    & .faux-button {
+        --height: 48px;
+        width: 230px;
+        height: var(--height);
+        @apply relative mb-16;
+
+        & input {
+            height: var(--height);
+            opacity: 0;
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            z-index: 3;
+        }
+        & .btn {
+            z-index: 1;
+            height: var(--height);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        & .hover-bg {
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+        }
+        & input:hover + .hover-bg {
+            background: rgb(96, 79, 205, 0.05);
+        }
+    }
+    & .cropping {
+        @apply text-textColor6 leading-160;
+        @apply text-center;
+    }
+    & .deleting {
+        @apply text-textColor6 leading-160;
+        @apply text-center;
+        & button {
+            @apply text-prominentLinkColor font-medium;
+        }
+    }
+}

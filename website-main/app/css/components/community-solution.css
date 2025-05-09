@@ -1,0 +1,96 @@
+@import "../styles";
+
+.c-community-solution {
+    @apply flex flex-col;
+    @apply shadow-base bg-backgroundColorA rounded-8;
+    @apply py-16 px-24;
+
+    & > .--header {
+        @apply flex items-center mb-20;
+
+        & > .c-exercise-icon,
+        & > .c-avatar {
+            height: 48px;
+            width: 48px;
+            @apply mr-16;
+        }
+
+        & > .--info {
+            @apply flex-grow;
+            & > .--title {
+                @apply flex text-16 font-semibold leading-150 text-textColor1;
+            }
+            & > .--subtitle {
+                @apply text-14 leading-160 text-textColor6;
+            }
+        }
+        & .--out-of-date {
+            @apply ml-24;
+            height: 16px;
+            width: 16px;
+            filter: var(--orange-filter);
+        }
+        & .passed-up-to-date-tests,
+        & .failed-up-to-date-tests {
+            @apply ml-16;
+            height: 16px;
+            width: 16px;
+        }
+        & .passed-up-to-date-tests {
+            filter: var(--dark-green-filter);
+        }
+        & .failed-up-to-date-tests {
+            filter: var(--red-filter);
+        }
+        & .c-iteration-processing-status {
+            @apply ml-24;
+            & .--status {
+                @apply hidden;
+            }
+        }
+    }
+
+    & > pre {
+        @apply flex-grow;
+        @apply border-1 border-borderColor7 rounded-8;
+        @apply mb-16;
+        @apply overflow-hidden;
+        & code {
+            @apply p-16;
+            @apply block;
+            height: 216px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    & > footer.--footer {
+        @apply flex items-center;
+        @apply text-textColor6 leading-paragraph;
+
+        & > time,
+        & .not-published {
+            @apply sm:block hidden;
+            @apply mr-24 flex-grow;
+            @apply leading-160 text-textColor6;
+        }
+        & > .--counts {
+            @apply flex;
+            @apply gap-x-24;
+            & > .--count {
+                @apply flex items-center;
+
+                & > .c-icon {
+                    height: 18px;
+                    width: 18px;
+                    @apply mr-8;
+                    filter: var(--textColor6-filter);
+                }
+                & > .--num {
+                    @apply flex-grow;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

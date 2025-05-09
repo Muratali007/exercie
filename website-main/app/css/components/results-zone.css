@@ -1,0 +1,28 @@
+.c-results-zone {
+    position: relative;
+
+    & .--fetching-overlay {
+        @apply flex justify-center;
+        @apply pt-48;
+
+        @apply hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(var(--backgroundColorA-RGB) / 0.8);
+
+        & .c-icon {
+            width: 64px;
+            height: 64px;
+            filter: var(--textColor7-filter);
+        }
+    }
+
+    &.--fetching {
+        & .--fetching-overlay {
+            @apply flex;
+        }
+    }
+}

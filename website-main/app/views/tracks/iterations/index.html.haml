@@ -1,0 +1,30 @@
+- require_stylesheet "track"
+
+#page-iterations-index
+  = render ViewComponents::Track::ExerciseHeader.new(@exercise, @solution, @user_track, :iterations)
+  -#
+    TODO: This component needs to cope without a solution
+    as there's often not a solution when there are no iterations
+  - if @solution
+    = ReactComponents::Student::IterationsList.new(@solution)
+  - else
+    .lg-container.container
+      %section.zero-state
+        %h2 You haven’t submitted any iterations yet.
+        %p
+          You’ll get to see all your iterations with test results and automated
+          feedback once you submit a solution.
+        .box
+          - if @exercise.has_test_runner?
+            .editor
+              %h4 Via Exercism Editor
+              = link_to edit_track_exercise_path(@track, @exercise), class: 'editor-btn btn-primary btn-m' do
+                = graphical_icon "editor"
+                %span Start in Editor
+
+          .cli
+            %h4 Work locally (via CLI)
+            = render ReactComponents::Common::CopyToClipboardButton.new(@exercise.download_cmd)
+
+        = render ViewComponents::ProminentLink.new("Learn more about solving exercises locally", Exercism::Routes.solving_exercises_locally_path)
+

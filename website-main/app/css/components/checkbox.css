@@ -1,0 +1,60 @@
+@import "../styles";
+
+label.c-checkbox-wrapper {
+    cursor: pointer;
+    @apply flex items-center;
+    @apply relative;
+
+    & input {
+        @apply absolute cursor-pointer;
+        opacity: 0;
+        width: 1em;
+        height: 1em;
+    }
+    & .row {
+        @apply flex items-center flex-grow;
+        transition: background 0.2s ease-out, border-color 0.2s ease-out;
+    }
+
+    & input:checked + .row {
+        background: var(--row-selected-background-color) !important;
+        border-color: var(--row-selected-border-color) !important;
+    }
+
+    & input:disabled + .row {
+        opacity: 0.7;
+        cursor: not-allowed;
+        .c-checkbox {
+            cursor: not-allowed;
+        }
+    }
+
+    & input:checked + .row {
+        & .c-checkbox .c-icon {
+            transform: scale(1);
+        }
+    }
+
+    & .c-checkbox {
+        @apply mr-16;
+        @apply flex-shrink-0;
+    }
+}
+.c-checkbox {
+    height: 21px;
+    width: 21px;
+
+    @apply bg-backgroundColorA;
+    @apply border-1 border-inputBorderColor rounded-5;
+    @apply cursor-pointer;
+    @apply grid place-items-center;
+    @apply text-textColor3;
+
+    & .c-icon {
+        height: 9px;
+        width: 9px;
+        transition: transform 0.2s linear;
+        transform: scale(0);
+        @apply filter-textColor1;
+    }
+}

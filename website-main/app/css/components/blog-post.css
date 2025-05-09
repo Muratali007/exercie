@@ -1,0 +1,30 @@
+@import "../styles";
+
+.c-blog-post {
+    @apply block p-16 rounded-8 shadow-base bg-backgroundColorA;
+    & .img {
+        @apply pt-[56%];
+        @apply mb-12 rounded-8;
+        @apply bg-no-repeat bg-cover bg-center;
+    }
+    & .new {
+        @apply bg-lightGold text-unnamed13 font-mono text-12 leading-paragraph;
+        @apply uppercase font-bold;
+        @apply inline-flex py-4 px-8 mb-8;
+    }
+    & .title {
+        @apply mb-4;
+        @apply overflow-hidden;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-height: 44px; /* Fallback for max 2 lines */
+    }
+    & .byline {
+        @apply text-16 leading-paragraph text-textColor6 font-medium;
+        & > * {
+            @apply inline;
+        }
+    }
+}

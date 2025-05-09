@@ -1,0 +1,34 @@
+@import "../styles";
+
+.c-solution-iterations {
+    @apply flex flex-col;
+    @apply overflow-hidden;
+    & .c-iteration-summary {
+        @apply flex-grow-0;
+    }
+    & .c-results-zone {
+        @apply flex-grow flex flex-col;
+        & .c-iteration-pane {
+            @apply h-arbitary;
+        }
+    }
+    .c-copy-text-to-clipboard {
+        .message {
+            right: 0;
+        }
+    }
+    & .c-iterations-footer {
+        @apply flex-grow-0;
+        @apply flex items-center py-16;
+        .iterations {
+            @apply py-0;
+        }
+
+        & .publish-settings-button {
+            @apply ml-auto px-0 border-borderColor6;
+            & .c-icon {
+                filter: var(--textColor6-filter);
+            }
+        }
+    }
+}

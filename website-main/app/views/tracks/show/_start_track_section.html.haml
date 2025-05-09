@@ -1,0 +1,8 @@
+%section.hello-world
+  = graphical_icon "hello-world", category: "graphics"
+  .content
+    %h3
+      Introduce yourself to the #{track.title} world by completing
+      %strong ”Hello, World!”
+    %p Familiarize yourself with how Exercism works and submit your first bit of code on the platform by completing the “Hello, World!” tutorial exercise.
+    = link_to "Go to the “Hello, World!” exercise", track_exercise_path(track, "hello-world"), class: 'btn-primary btn-m'

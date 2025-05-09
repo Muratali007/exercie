@@ -1,0 +1,187 @@
+@import "../styles";
+
+body.namespace-auth.user-signed_out {
+    turbo-frame {
+        @apply flex grow;
+    }
+}
+
+#page-auth {
+    --lhs-width: 550px;
+    background: linear-gradient(360deg, #5141bd 0%, #3e2ea5 100%),
+        linear-gradient(0deg, #2f2768, #2f2768);
+    @apply flex flex-col md:flex-row flex-grow relative;
+
+    & section.form-section {
+        @apply py-48 px-48;
+        @apply bg-backgroundColorA;
+        margin: 0 auto;
+        @apply flex-grow w-100;
+
+        @screen md {
+            max-width: 520px;
+        }
+        @screen lg {
+            max-width: 38%;
+        }
+
+        @apply flex flex-col items-center;
+
+        & > .inner {
+            @apply flex flex-col items-center;
+            @screen lg {
+                width: 100%;
+                max-width: var(--lhs-width);
+            }
+        }
+
+        & .logo {
+            @apply block mb-12;
+
+            & img {
+                height: 32px;
+                width: 177px;
+            }
+        }
+        & p.tagline {
+            @apply text-16 leading-paragraph text-darkGray;
+            @apply text-center;
+            @apply mb-32;
+        }
+        & .intro {
+            @apply mt-40 mb-16 w-100;
+            & h2 {
+                @apply text-h3 mb-12 text-left;
+            }
+            & p {
+                @apply text-16 leading-huge text-left;
+                & + p {
+                    @apply mt-12;
+                }
+                & a {
+                    @apply text-lightBlue font-medium;
+                    &:hover {
+                        @apply border-b-1;
+                        @apply border-lightBlue;
+                    }
+                }
+            }
+        }
+        & .github-btn {
+            @apply w-100 mb-24;
+
+            & button {
+                @apply w-100;
+            }
+
+            & .c-icon {
+                height: 16px;
+                width: 16px;
+                @apply mr-16;
+            }
+        }
+
+        & .divider {
+            @apply w-100 mb-16 relative flex items-center justify-center;
+            @apply text-14 font-mono font-bold leading-code uppercase;
+
+            & span {
+                @apply bg-backgroundColorA py-8 px-24;
+                z-index: 2;
+            }
+
+            &:before {
+                @apply absolute bg-borderLight;
+
+                content: "";
+                z-index: 1;
+                height: 1px;
+                left: 0;
+                right: 0;
+                top: 50%;
+            }
+        }
+        & .c-flash {
+            @apply w-100 mb-16;
+        }
+
+        & form.new_user {
+            @apply w-100 mb-24 mt-8;
+
+            & .field {
+                @apply mb-16;
+
+                &:focus-within {
+                    & label {
+                        @apply text-lightBlue;
+                    }
+                }
+
+                & label {
+                    @apply block mb-8;
+                    @apply text-14 leading-code uppercase font-mono font-bold;
+                }
+
+                & input {
+                    @apply w-100;
+                }
+                & .forgotten-password {
+                    @apply inline-block mt-12;
+                    @apply text-lightBlue font-semibold;
+                }
+            }
+            & button {
+                @apply mt-24;
+                @apply w-100;
+            }
+        }
+        & .devise-links {
+            @apply text-16 leading-code;
+            & .link {
+                @apply text-center;
+            }
+            & .link + .link {
+                @apply mt-8;
+            }
+            & a {
+                @apply text-lightBlue font-medium;
+            }
+        }
+    }
+    & section.information-section {
+        @apply flex flex-col flex-grow items-center;
+        max-height: 100vh;
+        @apply py-80 px-32;
+        position: sticky;
+        top: 0;
+
+        @apply hidden lg:flex;
+
+        & .content {
+            @apply mt-auto text-center;
+            @apply flex flex-col items-center;
+            & h2 {
+                @apply text-h3 text-textColor9 mb-12;
+            }
+            & p {
+                @apply text-p-large text-veryLightBlue;
+                max-width: 720px;
+                & strong {
+                    @apply font-semibold text-white;
+                }
+            }
+            & .icons {
+                @apply flex items-center mt-32;
+                & .c-track-icon {
+                    height: 64px;
+                    width: 64px;
+                    @apply mr-16;
+                }
+                & .more {
+                    @apply ml-8;
+                    @apply text-textColor9 font-semibold;
+                }
+            }
+        }
+    }
+}

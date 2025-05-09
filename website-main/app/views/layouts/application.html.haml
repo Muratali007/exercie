@@ -1,0 +1,27 @@
+!!!
+%html{ lang: "en-US" }
+  %head
+    -# Always start with this so browsers know what encoding to use
+    %meta{ "http-equiv": "Content-Type", content: "text/html; charset=utf-8" }
+
+    -# Do this first - we want things loading ASAP.
+    = render "layouts/head"
+
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
+
+    = render "layouts/meta_tags"
+
+  %body{ class: body_class }
+    = render ViewComponents::SiteHeader.new
+
+    = render template: "layouts/turbo_frame"
+
+    #portal-container
+    .c-loading-overlay
+
+    = render ViewComponents::SiteFooter.new
+
+    = yield :deferred
+
+-# TODO: Add test for this!
+- flash.clear

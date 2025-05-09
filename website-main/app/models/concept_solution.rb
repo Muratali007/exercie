@@ -1,0 +1,2 @@
+class ConceptSolution < Solution
+end

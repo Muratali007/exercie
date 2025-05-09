@@ -1,0 +1,38 @@
+@import "../styles";
+
+#page-exercises-index {
+    & section.exercises {
+        & .c-search-bar {
+            @apply mb-32;
+            & input.--search {
+                width: 100%;
+                @screen md {
+                    max-width: 440px;
+                }
+            }
+        }
+        & .tabs {
+            @apply flex overflow-x-auto;
+            @apply pb-12 mb-20;
+
+            & .c-tab {
+                height: 40px;
+                @apply cursor-pointer;
+
+                & .c-ed {
+                    height: 16px;
+                    width: 16px;
+                    @apply mr-12;
+                    &.--locked {
+                        cursor: pointer;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        & .exercises {
+            @apply grid gap-16;
+            @apply pb-40;
+        }
+    }
+}

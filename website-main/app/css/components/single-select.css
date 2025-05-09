@@ -1,0 +1,71 @@
+@import "../styles";
+
+.c-single-select,
+.c-multi-select {
+    @apply relative flex-shrink-0;
+
+    & > button,
+    & > .c-results-zone > button {
+        @apply flex items-center;
+        @apply border-1 border-buttonBorderColor2;
+        @apply shadow-smZ1 rounded-8 bg-backgroundColorA;
+        @apply w-100;
+        @apply text-left;
+        white-space: nowrap;
+    }
+    & > .--options {
+        @apply bg-backgroundColorA rounded-8 shadow-lg;
+        @apply relative z-dropdown;
+        @apply p-8;
+        min-width: 100%;
+
+        & label {
+            & .row {
+                @apply rounded-8;
+            }
+        }
+    }
+}
+
+.c-single-select {
+    & > button,
+    & > .c-results-zone > button {
+        height: 48px;
+        @apply px-24;
+
+        @apply text-16 leading-150;
+
+        & > .value {
+            @apply mr-auto;
+        }
+        & > .action-icon {
+            height: 16px;
+            width: 16px;
+            @apply xs:ml-24 ml-0 mr-0;
+            filter: var(--textColor2-filter);
+        }
+    }
+    & > .--options {
+        max-height: 50vh;
+        overflow-y: auto;
+
+        & label.c-radio-wrapper {
+            --row-selected-background-color: var(--backgroundColorD);
+
+            & .row {
+                @apply flex items-center;
+                @apply py-8 px-16;
+
+                /* padding-right: 81px; /1* This needs to line up with the dropdown *1/ */
+                /* min-width: 360px; */
+                @apply text-16 leading-150;
+
+                & > .c-icon {
+                    width: 24px;
+                    height: 24px;
+                    @apply mr-20;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+- require_stylesheet "mentoring"
+
+#mentor-queue-page
+  = render ViewComponents::Mentor::Header.new(:queue)
+
+  .lg-container
+    = render ReactComponents::Mentoring::Queue.new(current_user, @queue_params)

@@ -1,0 +1,145 @@
+@import "../../styles";
+@import "../../components/tag";
+
+.c-exercise-widget {
+    @apply flex items-center;
+    @apply w-100;
+
+    &.--interactive {
+        @apply shadow-base rounded-8 bg-backgroundColorA;
+        @apply py-16 px-24;
+        transition: box-shadow 0.2s ease-out;
+        &:hover:not(.--locked) {
+            @apply shadow-baseZ1;
+        }
+    }
+
+    &.--skinny {
+        @apply py-8 px-12;
+        & > .c-exercise-icon {
+            height: 24px;
+            width: 24px;
+            @apply mr-12;
+        }
+
+        & > .--info {
+            & > .--title {
+                @apply text-16 mb-0 font-medium text-textColor2;
+            }
+        }
+        & > .c-icon.--action-icon {
+            height: 16px;
+            width: 16px;
+            @apply ml-8;
+        }
+    }
+
+    & > .c-exercise-icon {
+        height: 64px;
+        width: 64px;
+        @apply mr-16 self-start;
+    }
+    & > .c-icon.--action-icon {
+        height: 24px;
+        width: 24px;
+        @apply ml-20;
+        filter: var(--textColor6-filter);
+    }
+
+    & > .--info {
+        @apply flex-grow self-start flex flex-col items-start;
+        & > .--title {
+            @apply flex items-center;
+            @apply text-h4 mb-8;
+
+            & .c-notification-dot {
+                @apply ml-16;
+            }
+            & .--out-of-date {
+                @apply ml-16;
+                height: 16px;
+                width: 16px;
+                filter: var(--orange-filter);
+            }
+
+            & .--track {
+                @apply flex-shrink-0 flex items-center;
+                @apply ml-8;
+                @apply text-14 leading-160 font-normal;
+                & .c-track-icon {
+                    height: 32px;
+                    width: 32px;
+                    @apply mx-6;
+                }
+                & .--track-title {
+                    @apply text-textColor2 font-semibold;
+                }
+            }
+        }
+        & > .--data {
+            @apply flex items-center gap-8 flex-wrap;
+
+            .c-exercise-status-tag {
+                &.--completed,
+                &.--published,
+                &.--in-progress {
+                    @apply mr-8;
+                }
+            }
+            & .--iterations-count {
+                @apply flex items-center;
+                @apply leading-150 font-medium text-textColor6;
+
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    filter: var(--textColor6-filter);
+                    @apply mr-6;
+                }
+            }
+
+            & .--mentoring-status {
+                height: 24px;
+                width: 24px;
+                filter: var(--textColor6-filter);
+            }
+        }
+        & > .--blurb {
+            @apply mt-12;
+            @apply text-15 leading-150 text-textColor6 overflow-hidden;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            max-height: 44px;
+        }
+    }
+
+    &.--locked {
+        cursor: pointer;
+        &:hover:not(.--static) {
+            @apply shadow-sm;
+        }
+
+        & > .--info {
+            & > .--title {
+                @apply text-textColor1;
+            }
+            & .--difficulty {
+                @apply hidden;
+            }
+        }
+        & > .c-icon.--action-icon {
+            filter: var(--textColor6-filter);
+        }
+    }
+    /* TODO */
+    &.--recommended {
+        @apply border-2 border-gradient;
+        box-shadow: 0px 4px 24px rgb(96, 79, 205, 0.4);
+        @apply bg-backgroundColorF;
+        &:hover:not(.--locked) {
+            box-shadow: 0px 4px 24px rgb(96, 79, 205, 0.7);
+        }
+    }
+}

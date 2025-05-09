@@ -1,0 +1,24 @@
+---
+:queues:
+  # High priority
+  - critical
+  - default
+  - mailers
+
+  # Important but not blocking
+  - notifications
+  - reputation
+  - solution_processing
+  - snippets
+  - cron
+  - background
+
+  # Background processes
+  - action_mailbox_routing
+  - action_mailbox_incineration
+  - active_storage_analysis
+  - active_storage_purge
+
+  # Lowest priority
+  - dribble
+  - metrics

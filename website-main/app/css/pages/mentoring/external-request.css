@@ -1,0 +1,12 @@
+#page-mentoring-external-request {
+    @apply relative;
+    & .lg-container {
+        @apply pt-40;
+    }
+
+    & .c-avatar {
+        height: 96px;
+        width: 96px;
+        @apply mb-24;
+    }
+}

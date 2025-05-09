@@ -1,0 +1,702 @@
+@layer base {
+    .scroll-x-editor-rhs {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        -webkit-overflow-scrolling: touch;
+
+        @apply overflow-x-auto;
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            white 20px,
+            white 95%,
+            transparent
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            white 20px,
+            white 95%,
+            transparent
+        );
+        @apply pl-20 pr-[5%];
+
+        &::-webkit-scrollbar {
+            @apply h-[6px];
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @apply rounded-8 bg-gray;
+            --tw-bg-opacity: 0.5;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            --tw-bg-opacity: 1;
+        }
+    }
+}
+
+.c-react-wrapper-editor {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+
+    @apply uses-suspense;
+}
+
+#page-editor {
+    @apply fixed flex flex-col;
+    width: 100%;
+    height: 100%;
+
+    & .editor-status {
+        @apply font-medium text-textColor6 text-15 leading-150;
+        @apply pl-20;
+        opacity: 0;
+        animation: fadeIn 0.2s linear 0.3s 1 normal forwards;
+    }
+
+    & .header {
+        @apply bg-backgroundColorA;
+        @apply border-b-1 border-borderColor6;
+        @apply flex-shrink-0 flex-grow-0;
+
+        @apply flex items-center;
+        @apply py-6 px-32;
+
+        & .close-btn,
+        & .options {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+
+        & .close-btn {
+            @apply flex;
+            @apply font-mono font-medium text-textColor6 text-14;
+            & .c-icon {
+                height: 16px;
+                width: 16px;
+                @apply mr-16;
+                filter: var(--textColor6-filter);
+            }
+        }
+        & .title {
+            @apply flex-grow flex justify-center;
+            @apply font-mono text-15 font-medium;
+
+            & .track {
+                @apply text-textColor6;
+            }
+
+            & .divider {
+                @apply text-textColor6;
+                @apply px-16;
+            }
+
+            & .exercise {
+                @apply text-textColor2 font-medium;
+            }
+        }
+        & .options {
+            @apply flex items-center justify-end;
+        }
+
+        & .hints-btn,
+        & .help-btn,
+        & .keyboard-shortcuts-btn,
+        & .settings-btn,
+        & .more-btn {
+            height: 36px;
+            @apply flex justify-center items-center;
+        }
+
+        & .hints-btn {
+            @apply px-6;
+            & .c-icon {
+                filter: var(--orange-filter);
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        & .help-btn {
+            @apply px-6;
+            & .c-icon {
+                filter: var(--orange-filter);
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        & .keyboard-shortcuts-btn {
+            @apply px-6;
+            @apply text-textColor6;
+            & .c-icon {
+                height: 24px;
+                width: 24px;
+                filter: var(--textColor6-filter);
+            }
+        }
+
+        & .hints-btn,
+        & .help-btn,
+        & .keyboard-shortcuts-btn,
+        & .settings-btn {
+            @apply mr-24;
+        }
+
+        & .settings-btn,
+        & .more-btn {
+            @apply text-textColor6;
+            @apply px-10;
+            & .c-icon {
+                height: 16px;
+                width: 16px;
+                filter: var(--textColor6-filter);
+            }
+        }
+
+        & .settings-dialog {
+            @apply bg-backgroundColorA;
+            @apply flex flex-col shadow-lg;
+            @apply py-24 px-32 text-left;
+            @apply z-dropdown;
+
+            & .setting {
+                @apply flex items-center justify-between;
+                @apply mb-16;
+                &:last-child {
+                    @apply mb-0;
+                }
+
+                & .name {
+                    @apply text-16 font-medium text-darkGray;
+                    @apply mr-56;
+                    width: 110px;
+                }
+
+                & .options {
+                    @apply bg-borderLight rounded-100;
+                    @apply flex items-center flex-grow-0;
+                    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+
+                    & label {
+                        @apply block relative;
+                        & .label {
+                            @apply px-12 py-6;
+                            @apply cursor-pointer;
+                            @apply border-1 border-borderLight rounded-100;
+                            @apply text-textColor7 font-mono font-bold leading-140;
+                        }
+
+                        /* Keep it here so it's discoverable by touch
+                         * for accessibility purposes */
+                        & input {
+                            @apply absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            &:checked + .label {
+                                background: var(--c-prominent-link-color);
+                                @apply text-textColor9;
+                            }
+
+                            /* It would be nice to DRY this up with application.css
+                             * but it's tricky with the adjacent element. */
+                            &:focus {
+                                & + .label {
+                                    outline: 5px auto -webkit-focus-ring-color;
+                                }
+                                &:not(.focus-visible) + .label {
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .actions-dialog {
+            min-width: 380px;
+        }
+    }
+    /* This appears in various places in the UI */
+    /* This whole thing is to get round issues with
+     * disabled buttons not firing mouse events */
+    & .run-tests-btn {
+        @apply relative;
+
+        & .disabled-wrapper {
+            @apply hidden absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        & button[disabled] + .disabled-wrapper {
+            @apply block;
+            cursor: not-allowed;
+        }
+    }
+
+    & .c-split-pane {
+        & .--split-lhs {
+            @apply flex flex-col;
+            @apply bg-backgroundColorB;
+            @apply overflow-hidden;
+            width: calc(100% - 33%);
+
+            & .tabs {
+                @apply flex;
+                @apply overflow-y-hidden overflow-x-auto;
+                @apply flex-shrink-0;
+                & .c-tab {
+                    @apply mr-0;
+                }
+            }
+
+            & .legacy-file-banner {
+                @apply px-16 py-12;
+                @apply bg-backgroundColorA;
+                @apply border-b-1 border-borderColor6;
+                @apply flex items-center;
+
+                & .c-prominent-link {
+                    @apply text-14;
+                }
+            }
+
+            & .c-iteration-pane {
+                overflow: hidden;
+            }
+            & .--tab-panel {
+                @apply flex-grow;
+                @apply overflow-hidden;
+                @apply flex flex-col;
+            }
+            & .editor {
+                @apply flex-grow;
+                @apply bg-backgroundColorA;
+                overflow-y: auto;
+                height: 100%;
+
+                & .ace_content {
+                    @apply font-medium;
+                }
+
+                /* These bits handle things resizing correctly */
+                @apply flex;
+                & .ace_editor {
+                    @apply flex-grow;
+                    @apply w-100;
+                }
+            }
+
+            /*@apply border-t-1 border-borderColor6;*/
+            & footer.lhs-footer {
+                @apply flex-shrink-0 flex-grow-0;
+                @apply flex items-center justify-end px-32 py-24;
+                @apply bg-backgroundColorB;
+                @apply relative;
+                box-shadow: inset 0 24px 24px -24px var(--backgroundColorB);
+
+                & button {
+                    @apply ml-20;
+                }
+                /* & .run-tests-btn {
+                    & button {
+                        @apply ml-0;
+                    }
+                } */
+            }
+        }
+        & .--split-rhs {
+            @apply bg-backgroundColorA;
+            @apply flex flex-col;
+            width: 33%;
+
+            /* Put a shadow over the LHS */
+            @apply shadow-xsZ1 z-shadow;
+
+            & .tabs {
+                @apply flex flex-shrink-0 flex-grow-0;
+                @apply py-16 px-24;
+                @apply scroll-x-editor-rhs;
+
+                & .c-tab {
+                    height: 36px;
+                    @apply mr-12;
+
+                    & .c-icon {
+                        height: 16px;
+                        width: 16px;
+                    }
+                }
+            }
+
+            & > .--tab-panel {
+                overflow-y: scroll;
+                height: 100%;
+            }
+
+            #panel-instructions,
+            #panel-chatgpt {
+                @apply border-t-1 border-borderColor7 pt-16;
+            }
+
+            #panel-get-help {
+                .hints {
+                    .c-textual-content {
+                        @apply mr-32;
+                    }
+                    .c-textual-content,
+                    .--summary-inner {
+                        @apply px-0 pb-0;
+                    }
+                    .--summary-inner {
+                    }
+                    .c-details {
+                        &:not([open]) {
+                            .--summary {
+                                @apply pb-0;
+                            }
+                        }
+
+                        &[open] {
+                            @apply pb-0;
+                            & .--summary {
+                                @apply pb-6;
+                            }
+                        }
+                    }
+                }
+            }
+
+            section.feedback-pane {
+                @apply pb-16 px-24;
+
+                .c-details.feedback {
+                    @apply border-t-2 border-lightGray;
+                    @apply first:border-t-0;
+
+                    & > .--summary {
+                        @apply mb-4;
+                        @apply pt-16 pb-12;
+                        & > .--summary-inner {
+                            @apply flex items-center;
+
+                            .summary-title {
+                                @apply flex-grow;
+                                @apply text-18 font-semibold leading-140;
+                            }
+
+                            .--closed-icon,
+                            .--open-icon {
+                                height: 24px;
+                                width: 24px;
+
+                                @apply flex flex-shrink-0 items-center justify-center;
+                                @apply border-gray border-1 rounded-circle;
+                                @apply text-darkGray;
+                                @apply ml-16;
+
+                                .c-icon {
+                                    height: 11px;
+                                    width: 11px;
+                                    @apply filter-textColor6;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & section.instructions-pane {
+                @apply pb-16 px-24;
+
+                & > .c-textual-content {
+                    & * + h3 {
+                        margin-top: 0;
+                    } /* Override the default */
+                    & :not(h2) + h3 {
+                        @apply mt-28;
+                    }
+                    & .content {
+                        @apply mt-0;
+                    }
+
+                    h4 {
+                        @apply mt-20;
+                    }
+                }
+                & .instructions {
+                    &:not-first-child {
+                        @apply pt-16;
+                        @apply border-t-1 border-borderColor6;
+                    }
+                }
+                & .debug-info {
+                    @apply border-t-2 border-borderColor6;
+                    @apply mt-24 pt-24;
+                }
+                & .c-details.task {
+                    @apply border-t-2 border-lightGray;
+                    @apply mt-24 pt-16;
+
+                    & > .--summary {
+                        @apply mb-10;
+                        & > .--summary-inner {
+                            @apply flex items-center;
+
+                            & .task-marker {
+                                @apply mr-20;
+                                @apply py-4 px-8;
+                                @apply bg-lightGold text-unnamed13 rounded-3;
+                                @apply font-mono font-bold text-12 leading-120;
+                                @apply flex-shrink-0 self-start;
+                                margin-top: 2px;
+                            }
+                            & .summary-title {
+                                @apply flex-grow;
+                                @apply text-18 font-semibold leading-140;
+                            }
+
+                            & .--closed-icon,
+                            & .--open-icon {
+                                height: 24px;
+                                width: 24px;
+
+                                @apply flex flex-shrink-0 items-center justify-center;
+                                @apply border-gray border-1 rounded-circle;
+                                @apply text-darkGray;
+                                @apply ml-16;
+
+                                & .c-icon {
+                                    height: 11px;
+                                    width: 11px;
+                                    @apply filter-textColor6;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & .--tab-panel.tests {
+                &:not([hidden]) {
+                    @apply flex;
+                }
+                & pre {
+                    @apply flex-grow pb-24;
+                    height: 100%;
+                }
+            }
+            & section.results {
+                & .running {
+                    @apply px-24 py-24;
+                    @apply flex flex-col items-center;
+                    & .c-icon {
+                        height: 24px;
+                        width: 24px;
+                        filter: var(--textColor6-filter);
+                        @apply mb-20;
+                    }
+                    & p {
+                        @apply text-14 leading-170 font-mono font-medium;
+                        @apply text-textColor6;
+                        @apply mb-16;
+                        & strong {
+                            @apply font-semibold;
+                            @apply text-textColor2;
+                        }
+                    }
+                }
+            }
+            & section.run-tests-prompt {
+                @apply flex flex-col items-center;
+                @apply pt-32 pb-8 px-8 mb-24;
+
+                & .c-icon {
+                    height: 48px;
+                    width: 48px;
+                    @apply mb-16;
+                }
+                .ask-chatgpt-btn-wrapper {
+                    @apply m-auto;
+                    .c-icon {
+                        height: 16px;
+                        width: 16px;
+                        @apply mb-0 mr-12;
+                    }
+                }
+
+                & h2 {
+                    @apply flex items-center;
+                    @apply mb-12;
+                    &,
+                    & button {
+                        @apply text-h6 text-textColor6;
+                    }
+                    & button {
+                        @apply py-0 px-0 mr-4;
+                        & :first-child {
+                            @apply mr-4;
+                        }
+                        & .--kb {
+                            padding-top: 3px;
+                            padding-bottom: 2px;
+                        }
+                    }
+                }
+                & p {
+                    @apply text-15 leading-160 text-textColor6;
+                    @apply text-center;
+                    max-width: 450px;
+                }
+            }
+        }
+    }
+}
+
+#page-editor {
+    & .cm-editor {
+        width: 100%;
+        @apply bg-backgroundColorB;
+
+        .cm-activeLine,
+        .cm-activeLineGutter {
+            background: var(--backgroundColorEditorActiveLine);
+        }
+
+        &.cm-focused,
+        & .focus-visible {
+            /* TODO: Find a way to set outline for a11y only */
+            outline: none;
+        }
+
+        .cm-cursor {
+            border-left-color: var(--cmCursorColor);
+        }
+        & .cm-panels-top {
+            @apply border-0;
+        }
+
+        & .cm-scroller {
+            @apply text-15 font-mono leading-160;
+        }
+        & .cm-gutters {
+            @apply bg-backgroundColorB;
+            @apply border-borderColor7;
+
+            & .cm-lineNumbers .cm-gutterElement {
+                @apply text-right text-textColor7;
+                width: 3rem;
+                padding: 0;
+            }
+            & .cm-foldGutter .cm-gutterElement {
+                @apply pr-4;
+                & span {
+                    vertical-align: top;
+                    line-height: 13px;
+                    &[title="Unfold line"] {
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+        & .cm-content {
+            @apply pt-0;
+            & .cm-line {
+                @apply pl-8 pr-8;
+            }
+        }
+    }
+    .c-discussion-timeline {
+        & .timeline-entry {
+            @apply px-0;
+
+            &:before {
+                left: 16px;
+            }
+        }
+    }
+}
+
+/* General overrides */
+/* #page-editor { */
+/*     & .ace_editor { */
+/*         line-height: 170%; */
+/*     } */
+/*     & .ace_gutter, */
+/*     & .ace_gutter-layer { */
+/*         width: 70px !important; */
+
+/*         & .ace_gutter-cell { */
+/*             padding-left: 0px !important; */
+/*             padding-right: 16px !important; */
+/*             text-align: center; */
+/*         } */
+/*     } */
+/*     & .ace_scroller { */
+/*         left: 70px !important; */
+/*     } */
+/*     & .ace_scroller.ace_scroll-left { */
+/*         box-shadow: 17px 2px 16px -16px rgba(79, 114, 205, 0.3) inset; */
+/*     } */
+
+/*     /1* Stop brackets from filling the full line height *1/ */
+/*     & .ace_bracket { */
+/*         max-height: 20px; */
+/*         margin-top: 3px; */
+/*     } */
+/*     & .ace_dialog.ace_dialog-bottom { */
+/*         @apply border-t-1 border-borderColor6; */
+/*         @apply bg-backgroundColorB; */
+/*         @apply pl-16; */
+/*         &, */
+/*         & input { */
+/*             @apply text-15 font-semibold font-mono; */
+/*             @apply text-darkGreen; */
+/*         } */
+/*         & input { */
+/*             @apply w-100; */
+/*             background: transparent; */
+/*             @apply pl-4; */
+/*             &:focus { */
+/*                 outline: none !important; */
+/*                 border: none !important; */
+/*                 box-shadow: none !important; */
+/*             } */
+/*         } */
+/*     } */
+/* } */
+
+/* /1* Light theme overrides *1/ */
+/* #page-editor .ace-tm { */
+/*     & .ace_gutter { */
+/*         @apply bg-backgroundColorA; */
+/*     } */
+/*     & .ace_gutter-cell { */
+/*         @apply text-textColor7; */
+/*     } */
+/*     /1* Same as the content active line *1/ */
+/*     & .ace_gutter-cell.ace_gutter-active-line { */
+/*         background: rgba(0, 0, 0, 0.07) !important; */
+/*     } */
+/* } */
+
+/* #page-editor .ace-cobalt { */
+/*     & .ace_gutter, */
+/*     & .ace_scroller { */
+/*         @apply bg-backgroundColorA; */
+/*     } */
+/* } */
+
+.c-modal.modal-editor-hints {
+    & .--modal-content {
+        max-width: 1100px;
+    }
+}

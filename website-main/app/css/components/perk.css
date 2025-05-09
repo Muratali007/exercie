@@ -1,0 +1,49 @@
+.c-perk {
+    @apply bg-backgroundColorA shadow-smZ1 rounded-8;
+    @apply p-20;
+    @apply flex flex-col items-stretch;
+
+    .logo {
+        @apply h-[40px] max-w-[190px];
+        @apply mb-12;
+        @apply self-start;
+    }
+    .about {
+        @apply text-p-base;
+        @apply mb-12;
+    }
+    .details {
+        @apply text-p-base font-medium;
+        @apply mt-auto mb-20;
+        strong {
+            @apply font-semibold text-textColor2;
+        }
+    }
+
+    .buttons {
+        @apply flex gap-12;
+        *:first-child {
+            @apply flex-grow;
+        }
+        .c-react-wrapper-perks-modal-button {
+            button {
+                @apply w-fill;
+            }
+        }
+    }
+}
+
+.theme-light {
+    .c-perk {
+        .logo-dark {
+            @apply hidden;
+        }
+    }
+}
+.theme-dark {
+    .c-perk {
+        .logo-light {
+            @apply hidden;
+        }
+    }
+}

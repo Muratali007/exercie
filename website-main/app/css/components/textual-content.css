@@ -1,0 +1,288 @@
+@import "../styles";
+
+.c-textual-content {
+    @apply font-body;
+
+    & img {
+        max-width: 100%;
+    }
+
+    &.--large {
+        & * {
+            @apply text-16;
+        }
+        @screen md {
+            & * {
+                @apply text-18;
+            }
+        }
+        & > * {
+            @apply mb-16;
+            &:last-child {
+                @apply mb-0;
+            }
+        }
+
+        /************/
+        /* HEADINGS */
+        /************/
+        & h2 {
+            @apply text-h3 mb-8;
+        }
+        & h3 {
+            @apply text-h4 mb-8;
+        }
+        & h4 {
+            @apply text-h5 mb-8;
+        }
+        & h5 {
+            @apply text-h6 mb-8;
+        }
+        & h6 {
+            @apply text-h6 mb-8;
+        }
+        & * + h3 {
+            @apply mt-32;
+        }
+        & p {
+            @apply mb-12;
+        }
+    }
+
+    &.--base {
+        & * {
+            @apply text-16;
+        }
+        & > * {
+            &:not(:first-child) {
+                @apply mt-12;
+            }
+            &:last-child {
+                @apply mb-0;
+            }
+        }
+
+        /************/
+        /* HEADINGS */
+        /************/
+        & h2 {
+            @apply text-h3 mb-8;
+            @apply text-24 mb-8;
+        }
+        & h3 {
+            @apply text-h4 mb-8;
+            @apply text-18 mb-8;
+        }
+        & * + h3 {
+            @apply mt-32;
+        }
+
+        /******************/
+        /* Block Elements */
+        /******************/
+        & p {
+            @apply mb-8;
+        }
+    }
+
+    &.--small {
+        & * {
+            @apply text-15;
+        }
+        & > * {
+            &:not(:first-child) {
+                @apply mt-12;
+            }
+            &:last-child {
+                @apply mb-0;
+            }
+        }
+
+        /************/
+        /* HEADINGS */
+        /************/
+        & h2 {
+            @apply text-h3 text-21 mb-4;
+        }
+        & h3 {
+            @apply text-h4 text-18 mb-4;
+        }
+        & h4 {
+            @apply text-h4 text-16 mb-4;
+        }
+        & * + h3 {
+            @apply mt-32;
+        }
+
+        /******************/
+        /* Block Elements */
+        /******************/
+        & p {
+            @apply mb-8;
+        }
+    }
+
+    /*************/
+    /* Footnotes */
+    /*************/
+
+    .footnotes * {
+        @apply text-14;
+    }
+
+    .footnotes {
+        @apply border-t-1 border-borderColor6 pt-20 mt-20;
+    }
+
+    @screen md {
+        .footnotes * {
+            @apply text-16;
+        }
+    }
+}
+
+.c-textual-content {
+    /* This is necessary else the rules above override
+     * the ones below */
+    &.--large,
+    &.--base,
+    &.--small {
+        & * {
+            @apply leading-160;
+            overflow-wrap: anywhere;
+            hyphens: auto;
+        }
+
+        table * {
+            overflow-wrap: initial;
+            hyphens: initial;
+        }
+
+        /******************/
+        /* Block elements */
+        /*****************/
+        & blockquote {
+            @apply border-l-4 border-borderColor5 pl-24;
+            @apply text-textColor6;
+            @apply mt-16 mb-24;
+            & strong {
+                @apply font-medium;
+            }
+        }
+
+        .c-textblock-note,
+        .c-textblock-caution,
+        .c-textblock-advanced {
+            @apply mt-12 mb-24;
+        }
+
+        /*******************/
+        /* Inline elements */
+        /*******************/
+        & a {
+            @apply font-semibold;
+            color: var(--c-prominent-link-color);
+            .c-icon {
+                filter: var(--c-prominent-link-icon-filter);
+            }
+        }
+
+        & strong {
+            @apply text-textColor2 font-medium;
+        }
+        & em {
+            @apply italic;
+        }
+        & strikethrough {
+            @apply line-through;
+        }
+
+        /*********/
+        /* Lists */
+        /*********/
+        & ul,
+        & ol {
+            @apply mb-24;
+            margin-left: 14px;
+            & li {
+                margin-left: 6px;
+                @apply mt-0;
+                @apply mb-8;
+                @apply pl-4;
+            }
+        }
+        & ul li {
+            @apply list-disc;
+        }
+        & ol li {
+            @apply list-decimal;
+        }
+
+        /*********/
+        /* Code */
+        /*********/
+        /* Block-level code blocks */
+        & pre {
+            @apply border-1 border-borderColor5 rounded-8 bg-backgroundColorA;
+            @apply mb-24;
+            @apply text-16;
+            @apply overflow-hidden;
+            & code {
+                @apply block;
+                @apply py-12 px-20 overflow-auto;
+            }
+        }
+        /* Inline code blocks */
+        & :not(pre) > code {
+            @apply inline-flex items-center justify-center rounded-5;
+            @apply px-6 text-textColor10 leading-regular;
+            background: var(--backgroundColorI);
+        }
+
+        a {
+            &:not(pre) > code {
+                @apply text-prominentLinkColor;
+            }
+        }
+
+        & table {
+            @apply my-16;
+            @apply bg-backgroundColorA;
+            @apply rounded-5 overflow-hidden;
+
+            & td,
+            & th {
+                @apply px-24 py-12;
+                @apply text-left;
+            }
+            & th {
+                @apply font-mono font-bold leading-150 text-textColor2;
+                @apply border-b-2 border-borderColor6;
+                @apply text-14;
+            }
+            & td {
+                @apply border-b-1 border-borderColor6;
+            }
+            & tr:last-child {
+                & td {
+                    @apply border-b-0;
+                }
+            }
+        }
+    }
+}
+
+@screen md {
+    .c-textual-content {
+        /* This is necessary else the rules above override
+     * the ones below */
+        &.--large,
+        &.--base,
+        &.--small {
+            & * {
+                overflow-wrap: initial;
+                hyphens: initial;
+            }
+        }
+    }
+}

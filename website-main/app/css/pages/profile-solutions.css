@@ -1,0 +1,26 @@
+#page-profile-solutions {
+    @apply mb-80;
+    & article {
+        @apply pt-32;
+        & .c-search-bar {
+            @apply mb-32;
+            @apply flex-col md:flex-row items-stretch md:items-center gap-y-8;
+
+            & .c-track-select {
+                @apply md:mr-24;
+            }
+
+            & .--search {
+                @apply w-fill md:w-[450px];
+                @apply bg-[28px_center] md:bg-[12px_center];
+                @apply pl-52 md:pl-40;
+            }
+            & .c-single-select {
+                @apply md:ml-auto;
+            }
+        }
+        & .solutions {
+            @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24;
+        }
+    }
+}

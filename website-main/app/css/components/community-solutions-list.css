@@ -1,0 +1,38 @@
+@import "../styles";
+
+.c-community-solutions-list {
+    & > .c-search-bar {
+        input.--search {
+            @apply !m-0;
+        }
+
+        & .c-checkbox-wrapper {
+            @apply mr-16;
+            & .c-checkbox {
+                @apply mr-8;
+            }
+            & .row > .c-icon {
+                width: 24px;
+                height: 24px;
+                filter: var(--dark-green-filter);
+            }
+        }
+        & .c-iteration-processing-status {
+            & .--status {
+                @apply hidden;
+            }
+        }
+    }
+
+    .c-single-select {
+        button {
+            @apply justify-between;
+            .value {
+                @apply mr-0;
+            }
+            .c-icon.action-icon {
+                @apply ml-0;
+            }
+        }
+    }
+}

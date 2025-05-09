@@ -1,0 +1,27 @@
+# JS files
+*.js       @iHiD @dem4ron
+*.jsx      @iHiD @dem4ron
+
+# TypeScript files
+*.ts       @iHiD @dem4ron
+*.tsx      @iHiD @dem4ron
+
+# CSS Files
+*.css       @iHiD
+
+# Ruby files
+*.rb      @iHiD
+*.ru      @iHiD
+Gemfile*  @iHiD
+config/   @iHiD
+db/       @iHiD
+lib/      @iHiD
+Rakefile  @iHiD
+
+# Docker and deployment files
+docker/   @iHiD
+Procfile* @iHiD
+.github   @iHiD
+
+# Bin files
+bin/     @iHiD

@@ -1,0 +1,36 @@
+.c-iteration-processing-status {
+    @apply flex items-center;
+
+    & .--dot {
+        @apply rounded-circle;
+        height: 8px;
+        width: 8px;
+    }
+    & .c-icon {
+        height: 16px;
+        width: 16px;
+    }
+    & .--status {
+        @apply font-mono font-bold;
+        @apply ml-12;
+        @apply hidden md:block;
+    }
+    &.--processing {
+        @apply text-orange;
+        & .c-icon {
+            filter: var(--processing-orange-filter);
+        }
+    }
+    &.--passed {
+        @apply text-darkGreen;
+        & .--dot {
+            @apply bg-darkGreen;
+        }
+    }
+    &.--failed {
+        @apply text-red;
+        & .--dot {
+            @apply bg-red;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+.c-notification {
+    @apply relative flex items-center justify-center;
+    @apply rounded-8 text-orange;
+    height: 37px;
+    width: 41px;
+
+    box-shadow: 0px 4px 24px rgba(var(--shadowColorNotificationBell), 0.4);
+
+    background: var(--backgroundColorNotifications);
+    & .c-icon {
+        width: 21px;
+        height: 21px;
+        filter: var(--notifications-active-filter);
+    }
+
+    & .--count {
+        @apply absolute flex items-center justify-center;
+        @apply text-textColor9 font-semibold rounded-circle;
+        background: var(--backgroundColorNotificationsCount);
+        top: -7px;
+        right: -10px;
+        width: 25px;
+        height: 25px;
+    }
+
+    &.--none {
+        box-shadow: 0px 4px 16px 0px rgba(var(--shadowColorMain), 0.3);
+
+        /* We need the bg-none to reset the gradient */
+        @apply bg-none bg-backgroundColorA text-textColor5;
+
+        & .--count {
+            @apply hidden;
+        }
+        & .c-icon {
+            filter: var(--notifications-inactive-filter);
+        }
+    }
+    &.--double-digit {
+        & .--count {
+            font-size: 13px;
+        }
+    }
+    &.--triple-digit {
+        & .--count {
+            @apply invisible;
+            &:after {
+                background: var(--backgroundColorNotificationsCount);
+                @apply absolute rounded-circle;
+                @apply visible;
+
+                content: "";
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+}

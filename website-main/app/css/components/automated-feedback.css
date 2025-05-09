@@ -1,0 +1,79 @@
+.c-automated-feedback {
+    & .feedback-header {
+        @apply flex items-center;
+        @apply mb-12;
+
+        & > .c-avatar,
+        & > .c-icon {
+            height: 32px;
+            width: 32px;
+            @apply mr-16;
+        }
+        & .info {
+            @apply text-15 leading-160 font-medium text-textColor6;
+            & strong {
+                @apply text-textColor1 font-semibold;
+            }
+        }
+    }
+    & .c-textual-content {
+        @apply text-15 text-textColor1 leading-paragraph;
+        max-width: 100%;
+    }
+    & .byline {
+        @apply flex items-center;
+        @apply text-textColor6 font-medium;
+
+        & .c-avatar {
+            height: 32px;
+            width: 32px;
+            @apply mr-12;
+        }
+        & .c-reputation {
+            @apply ml-12;
+        }
+    }
+}
+
+.c-automated-feedback.analyzer-feedback {
+    & .explanation {
+        @apply border-t-2 border-borderColor6 pt-16 mt-16;
+        @apply text-15 leading-160;
+        & a {
+            @apply inline-flex items-center;
+            @apply text-prominentLinkColor font-semibold;
+            @apply mr-8;
+            & .c-icon {
+                height: 12px;
+                width: 12px;
+                @apply ml-6;
+                @apply filter-prominentLinkColor;
+            }
+        }
+    }
+
+    & .summary {
+        @apply bg-lightOrange rounded-8;
+        @apply text-brown text-15 leading-160 font-medium;
+        @apply py-8 px-16 mb-16;
+    }
+
+    & .comment {
+        & + .comment {
+            @apply border-t-1 border-lightGray mt-16 pt-16;
+        }
+
+        @apply flex flex-col items-start;
+
+        & .tag {
+            @apply text-13 leading-170 font-mono font-bold rounded-3;
+            @apply px-8 mb-8;
+            &.essential {
+                @apply bg-red text-white;
+            }
+            &.recommended {
+                @apply bg-warning text-white;
+            }
+        }
+    }
+}

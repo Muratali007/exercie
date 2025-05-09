@@ -1,0 +1,6 @@
+export { default as WelcomeModal } from './welcome-modal/WelcomeModal'
+export { TrackWelcomeModal } from './track-welcome-modal/TrackWelcomeModal'
+export { default as WelcomeToInsidersModal } from './WelcomeToInsidersModal'
+export { default as Modal } from './Modal'
+export { UploadVideoModal } from './upload-video'
+export { RealtimeFeedbackModal } from './realtime-feedback-modal/RealTimeFeedbackModal'

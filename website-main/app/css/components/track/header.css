@@ -1,0 +1,91 @@
+@import "../../styles.css";
+
+.c-track-header {
+    @apply bg-backgroundColorA pt-16 shadow-base;
+    /* Needed for the box-shadow */
+    @apply relative;
+    z-index: 2;
+
+    & > .container {
+        @apply relative;
+    }
+
+    & .text-h1 {
+        @apply text-28 md:text-39;
+    }
+    & .c-track-icon {
+        height: 48px;
+        width: 48px;
+        @apply mr-16;
+
+        @screen lg {
+            height: 54px;
+            width: 54px;
+        }
+    }
+    & .students {
+        @apply text-15 leading-150 font-medium text-textColor6;
+        & .c-icon {
+            height: 21px;
+            width: 21px;
+            filter: var(--textColor6-filter);
+            @apply mr-12;
+        }
+    }
+
+    & .tabs {
+        @apply flex flex-grow mt-8;
+        @media screen and (max-width: 435px) {
+            & .c-tab-2 {
+                @apply py-8;
+            }
+            & .c-icon {
+                @apply hidden;
+            }
+        }
+        & :last-child {
+            @apply mr-0;
+        }
+    }
+
+    & .people {
+        @apply items-center justify-end;
+        @apply leading-150;
+        & .c-faces {
+            @apply mr-16;
+        }
+        & .contributors {
+            @apply font-semibold text-textColor2;
+        }
+        & .mentors {
+            @apply font-medium text-textColor2;
+        }
+    }
+
+    & .c-react-wrapper-dropdowns-track-menu {
+        @apply absolute;
+        right: 0;
+        @screen lg {
+            right: var(--container-padding-x);
+        }
+
+        top: 50%;
+        margin-top: -17px;
+    }
+    & .c-track-menu {
+        @apply ml-48;
+        & li {
+            white-space: nowrap;
+        }
+        & > button {
+            @apply p-8;
+            @apply border-1 border-borderColor5;
+            @apply shadow-keystroke rounded-5;
+            & .c-icon {
+                height: 16px;
+                width: 16px;
+                filter: var(--textColor5-filter);
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "../styles";
+@import "./base";
+
+.c-user-tooltip {
+    @apply c-tooltip-base;
+
+    width: 460px;
+
+    & .heading {
+        @apply flex items-center mb-12;
+
+        & .c-avatar {
+            width: 48px;
+            height: 48px;
+
+            @apply mr-16;
+        }
+        & .identifier {
+            @apply flex-grow;
+
+            & .name {
+                @apply text-16 text-darkGray font-semibold leading-paragraph;
+            }
+            & .handle {
+                @apply text-15 text-textColor6 font-medium leading-paragraph;
+            }
+        }
+    }
+
+    & .bio {
+        @apply text-15 leading-paragraph mb-8;
+    }
+
+    & .location {
+        @apply flex items-center text-14 leading-paragraph font-medium;
+        & .c-icon {
+            height: 16px;
+            width: 16px;
+            @apply mr-12;
+            @apply filter-textColor6;
+        }
+    }
+}

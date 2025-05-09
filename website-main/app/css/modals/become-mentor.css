@@ -1,0 +1,210 @@
+@import "../styles";
+
+.m-become-mentor {
+    --inner-width: 800px;
+
+    & .--modal-content {
+        @apply py-48;
+    }
+    & header {
+        @apply flex items-center justify-between;
+        @apply mb-8;
+
+        & .steps {
+            @apply flex items-center;
+            & .step {
+                height: 16px;
+                width: 16px;
+                @apply rounded-circle;
+                @apply border-2 border-buttonBorderColor2;
+
+                &.selected {
+                    @apply border-buttonBorderColor1;
+                    background: rgba(231, 236, 252);
+                }
+
+                & + .step {
+                    display: flex;
+                    align-items: center;
+                    @apply ml-24;
+                    &:before {
+                        content: " ";
+                        width: 24px;
+                        @apply border-b-2 border-buttonBorderColor2;
+                        margin-left: -26px;
+                        @apply block;
+                    }
+                }
+            }
+        }
+        & .close-btn {
+            @apply p-8;
+            & .c-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    & h2 {
+        @apply text-h1 mb-16;
+    }
+    & p {
+        max-width: var(--inner-width);
+
+        @apply text-18 leading-170 mb-24;
+
+        & strong {
+            @apply font-medium;
+        }
+    }
+
+    & section.tracks-section {
+        & .c-mentor-track-selector {
+            & .selected {
+                @apply mr-48;
+            }
+        }
+    }
+
+    & section.commit-section {
+        @apply flex;
+        & .rhs {
+            margin-left: 160px;
+            & .c-icon {
+                width: 240px;
+                height: 240px;
+            }
+        }
+
+        & .reputation-info {
+            background: linear-gradient(180deg, #cc00ff 0%, #3300ff 100%);
+
+            @apply rounded-12 shadow-baseZ1;
+            @apply relative flex px-8 items-center justify-center border-none;
+            @apply mb-28 p-6;
+
+            & .inner {
+                @apply flex py-16 px-32 items-center justify-center;
+                @apply text-13 text-textColor7;
+                @apply flex-grow rounded-8;
+                background: var(--backgroundColorReputationInfo);
+                @apply font-semibold text-16;
+
+                line-height: 28px;
+
+                & .c-icon {
+                    height: 48px;
+                    width: 48px;
+                    @apply mr-32;
+                    filter: var(--filter-E2CB2D);
+                }
+                & h3 {
+                    @apply text-h4 text-aliceBlue mb-4;
+                }
+                & p {
+                    @apply text-16 leading-160 font-normal text-veryLightBlue;
+                    @apply mb-0;
+
+                    & strong {
+                        @apply text-aliceBlue font-medium;
+                    }
+                }
+            }
+        }
+        & .commitment {
+            --row-selected-background-color: var(
+                --backgroundColorExerciseStatusTagLocked
+            );
+            --row-selected-border-color: var(--c-6A93FF);
+
+            @apply mb-24;
+
+            & h3 {
+                @apply text-h3 mb-20;
+            }
+            & .c-checkbox-wrapper {
+                @apply mb-12;
+
+                & input[type="checkbox"].focus-visible + .row {
+                    @apply border-2 border-inputBorderColorFocus;
+                }
+
+                & .row {
+                    @apply bg-backgroundColorA;
+                    @apply shadow-base;
+                    @apply py-16 px-32;
+                    @apply border-2 border-borderColor9 rounded-8;
+
+                    & .c-checkbox {
+                        @apply text-20 mr-24;
+                    }
+                    & span {
+                        @apply text-18 leading-170;
+
+                        & a {
+                            @apply inline-flex items-center;
+                            @apply text-prominentLinkColor font-medium;
+                            & .c-icon {
+                                height: 16px;
+                                width: 16px;
+                                @apply ml-6;
+                                @apply filter-prominentLinkColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & .celebrate-section {
+        @apply flex flex-col items-center;
+
+        & h3 {
+            @apply text-h3 mb-20;
+        }
+        & .c-icon {
+            height: 128px;
+            width: 128px;
+            @apply mb-8;
+        }
+
+        & p.welcome {
+            @apply text-center mb-32;
+        }
+        & .video-frame {
+            @apply px-32 pt-16 pb-32 mb-32;
+            @apply bg-backgroundColorA rounded-8 shadow-lg;
+            width: 100%;
+            max-width: var(--inner-width);
+
+            & .video-header {
+                @apply flex items-center justify-start;
+                @apply mb-16;
+                & .c-icon {
+                    width: 32px;
+                    height: 32px;
+                    @apply mr-24;
+                    @apply filter-textColor6;
+                }
+
+                & .info {
+                    & h3 {
+                        @apply text-h4 mb-0;
+                    }
+                    & p {
+                        @apply text-textColor6 text-16 leading-170;
+                        @apply mb-0;
+                    }
+                }
+            }
+            & .video {
+                width: 100%;
+            }
+        }
+        & button {
+            width: 100%;
+            max-width: var(--inner-width);
+        }
+    }
+}

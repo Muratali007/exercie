@@ -1,0 +1,2 @@
+class PracticeSolution < Solution
+end

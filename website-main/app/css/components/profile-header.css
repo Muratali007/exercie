@@ -1,0 +1,174 @@
+header.c-profile-header {
+    @apply bg-backgroundColorA;
+    @apply relative shadow-base;
+    @apply pt-24;
+
+    & .info-section {
+        @apply flex flex-row-reverse sm:flex-row;
+
+        & .c-avatar {
+            @apply h-[20vw] w-[20vw];
+            @apply max-h-[100px] max-w-[100px];
+            @apply lg:max-h-[128px] lg:max-w-[128px];
+
+            @apply shadow-xsZ1;
+            @apply md:ml-32 ml-0 sm:mr-20 md:mr-32;
+        }
+
+        & .info {
+            @apply flex-grow mr-0 sm:mr-20 md:mr-40;
+
+            & .heading {
+                @apply flex items-center;
+                @apply mb-8;
+                & h1 {
+                    @apply text-h2 mr-20;
+                }
+                & .c-primary-reputation {
+                    @apply mr-24 sm:flex hidden;
+                }
+                & .tracks {
+                    @apply hidden md:flex;
+
+                    & .c-track-icon {
+                        height: 40px;
+                        width: 40px;
+                        @apply mr-12;
+                    }
+                }
+            }
+            & .name {
+                @apply text-h4 text-textColor6 leading-140;
+                @apply mb-12;
+            }
+            & .details {
+                @apply flex flex-col gap-y-4 md:flex-row md:items-center mb-12;
+
+                & .location,
+                & .pronouns,
+                & .joined {
+                    @apply text-16 leading-150 text-textColor2 font-medium;
+                    @apply mr-28;
+                    @apply flex items-center;
+                    & .c-icon {
+                        height: 16px;
+                        width: 16px;
+                        @apply mr-12;
+                        @apply filter-textColor6;
+                    }
+                }
+            }
+            & .c-react-wrapper-common-expander {
+                min-height: 75px;
+            }
+            & .bio {
+                @apply text-p-base;
+                max-width: 740px;
+
+                &.compressed {
+                    & .content {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+
+                        height: 50px;
+                    }
+                }
+                & button {
+                    @apply font-medium;
+                    color: var(--c-prominent-link-color);
+                }
+            }
+        }
+        & .badges-and-tags {
+            @apply hidden lg:flex flex-col items-end;
+            @apply whitespace-nowrap;
+
+            & .header {
+                @apply flex items-center;
+                @apply mb-12;
+
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    @apply mr-12;
+                }
+                .c-icon:not(.c-prominent-link .c-icon) {
+                    @apply filter-textColor6;
+                }
+                & h3 {
+                    @apply font-medium text-textColor2;
+                    @apply mr-32;
+                }
+                & .c-prominent-link {
+                    @apply text-14;
+                }
+            }
+            & .badges {
+                @apply flex mb-32;
+                & .c-badge {
+                    @apply ml-8;
+
+                    & .c-badge-medallion {
+                        height: 48px;
+                        width: 48px;
+                    }
+                }
+            }
+            & .tags {
+                @apply flex mb-8;
+
+                & .tag {
+                    @apply ml-16;
+                    @apply py-6 px-16;
+                    @apply border-2 rounded-100;
+                    @apply flex items-center;
+
+                    & .c-icon {
+                        height: 16px;
+                        width: 16px;
+                        @apply mr-10;
+                        @apply filter-textColor6;
+                    }
+                    & .title {
+                        @apply font-semibold leading-170;
+                    }
+
+                    &.insider .c-icon {
+                        filter: none;
+                    }
+
+                    &.founder,
+                    &.staff {
+                        @apply bg-backgroundColorF;
+                        @apply border-gradient;
+                    }
+                    &.maintainer {
+                        @apply border-textColor2;
+                    }
+                }
+            }
+        }
+    }
+    & .tabs-section {
+        @apply mt-4;
+        @apply flex items-center;
+
+        & .external-links {
+            @apply ml-auto mb-10; /* Bottom margin accounts border tab border */
+
+            @apply hidden md:flex items-center;
+
+            & a {
+                @apply px-16 py-12;
+                @apply shadow-baseZ1 bg-backgroundColorA rounded-100 ml-12;
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    @apply filter-textColor1;
+                }
+            }
+        }
+    }
+}

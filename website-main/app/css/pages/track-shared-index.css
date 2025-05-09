@@ -1,0 +1,52 @@
+@import "../styles";
+
+#page-concepts-index,
+#page-exercises-index {
+    & article.content {
+        @apply pt-40;
+    }
+
+    & section.external-cta {
+        @apply mb-56 py-24 px-80 rounded-12;
+        @apply border-2 border-anotherPurple;
+        @apply flex items-center;
+        background: var(--backgroundColorExternalCTA);
+
+        & .c-track-icon {
+            height: 64px;
+            width: 64px;
+            @apply mr-64;
+        }
+
+        & .info {
+            @apply flex-grow mr-24;
+            & h2 {
+                @apply text-h4 mb-6;
+            }
+            & p {
+                @apply text-16 leading-paragraph;
+                max-width: 440px;
+            }
+        }
+    }
+    & header.page-header {
+        @apply mb-40;
+        & .container {
+            @apply flex items-center justify-center;
+        }
+
+        & .graphic {
+            height: 128px;
+            width: 128px;
+            @apply mr-36;
+        }
+        & .info {
+            & h1 {
+                @apply text-h2 mb-8;
+            }
+            & p {
+                @apply text-p-large;
+            }
+        }
+    }
+}

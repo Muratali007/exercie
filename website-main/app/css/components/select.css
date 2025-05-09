@@ -1,0 +1,36 @@
+@import "../styles";
+
+.c-select {
+    @apply grid items-center;
+    @apply text-16 leading-huge;
+    @apply bg-backgroundColorA;
+    @apply cursor-pointer;
+    @apply border-1 border-buttonBorderColor2 rounded-5;
+    grid-template-areas: "select";
+
+    & select {
+        appearance: none;
+        background-color: transparent;
+        cursor: inherit;
+        outline: none;
+        @apply py-16 pl-20 pr-80;
+        @apply text-textColor1;
+        grid-area: select;
+    }
+
+    &:after {
+        @apply bg-textColor1;
+        @apply mr-20;
+
+        content: "";
+        width: 13px;
+        height: 8px;
+        clip-path: polygon(0 0, 0 10%, 50% 100%, 100% 10%, 100% 0, 50% 90%);
+        grid-area: select;
+        justify-self: end;
+    }
+
+    &:focus-within {
+        @apply border-inputBorderColorFocus;
+    }
+}

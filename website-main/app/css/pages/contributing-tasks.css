@@ -1,0 +1,226 @@
+@import "../styles";
+
+.c-task-tooltip {
+    @apply hidden md:block;
+}
+.c-task-tooltip,
+#contributing-tasks .task {
+    & .size-tag {
+        height: 24px;
+        width: 24px;
+        @apply grid place-items-center;
+        @apply font-mono leading-150 font-semibold;
+        @apply border-1 border-textColor6 rounded-3;
+        &.blank {
+            @apply border-transparent;
+        }
+    }
+    & .knowledge-tag {
+        @apply flex items-center;
+        @apply border-1 border-borderColor5 rounded-5;
+        @apply py-8 px-16;
+
+        & .c-icon {
+            height: 24px;
+            width: 24px;
+            @apply mr-12 filter-textColor6;
+        }
+        & .dot {
+            @apply border-2 border-textColor6 rounded-circle;
+            @apply ml-4;
+            height: 12px;
+            width: 12px;
+
+            &.filled {
+                @apply bg-textColor6;
+            }
+        }
+        &.blank {
+            @apply border-transparent;
+        }
+    }
+
+    & .action-icon {
+        height: 40px;
+        width: 40px;
+        @apply border-2 border-textColor2 rounded-circle;
+        @apply grid place-items-center;
+        & .c-icon {
+            height: 25px;
+            width: 25px;
+            @apply filter-textColor6;
+        }
+    }
+
+    & .module {
+        height: 24px;
+        width: 24px;
+        @apply filter-textColor6;
+    }
+}
+
+#contributing-tasks {
+    @apply pb-140;
+    @apply mb-140;
+
+    & .c-search-bar {
+        @apply mb-16 hidden;
+        @apply lg:flex lg:flex-wrap lg:justify-end;
+
+        & .c-track-select {
+            @apply mr-auto mb-16;
+        }
+        & .c-multi-select {
+            @apply ml-16 mb-16;
+
+            &.action-switcher {
+                min-width: 172px;
+            }
+            &.type-switcher {
+                min-width: 156px;
+            }
+            &.size-switcher {
+                min-width: 156px;
+            }
+            &.knowledge-switcher {
+                min-width: 197px;
+            }
+            &.module-switcher {
+                min-width: 230px;
+            }
+
+            & .size-tag {
+                @apply mr-16;
+            }
+            & .knowledge-tag {
+                @apply border-none p-0 mr-16;
+            }
+            & .knowledge-reset {
+                @apply ml-16 mr-24;
+            }
+        }
+    }
+    & header.main-header {
+        @apply flex items-center mb-16;
+
+        & h2 {
+            @apply text-h4 text-textColor6;
+            @apply mr-16;
+            @apply lg:flex lg:items-center;
+            & strong {
+                @apply mr-12 text-h3;
+            }
+        }
+        & .reset-btn {
+            @apply mr-32;
+        }
+
+        & .c-single-select {
+            @apply ml-auto;
+            @apply hidden lg:flex;
+        }
+    }
+    & .tasks {
+        @apply shadow-lg rounded-8 bg-backgroundColorA;
+        & .task {
+            overflow-wrap: anywhere;
+            hyphens: auto;
+            @apply py-10 px-16 sm:px-24;
+
+            @apply items-center;
+            @apply border-b-1 border-borderColor7;
+            & .knowledge-tag,
+            & .size-tag {
+                @apply ml-0 md:ml-48;
+            }
+
+            & .action-icon {
+                @apply mr-16 flex-shrink-0;
+                .c-icon {
+                    @apply filter-textColor6;
+                }
+            }
+            & .info {
+                & .heading {
+                    @apply flex items-center;
+                    @apply mb-4;
+                    & h3 {
+                        @apply text-16 leading-160 font-medium text-textColor2;
+                    }
+                    & .new {
+                        @apply md:flex hidden items-center;
+                        @apply text-orange font-semibold;
+                        & .c-icon {
+                            filter: var(--orange-filter);
+                            height: 16px;
+                            width: 16px;
+                            @apply ml-16 mr-8;
+                        }
+                    }
+                }
+                & .track-type {
+                    @apply flex items-center;
+                    & .track {
+                        @apply flex items-center;
+                        @apply font-mono text-14 leading-160;
+                        @apply mr-12;
+                        & .for {
+                            @apply font-medium text-textColor3;
+                        }
+                        & .c-track-icon {
+                            height: 24px;
+                            width: 24px;
+                            @apply ml-6 mr-8;
+                        }
+                        & .title {
+                            @apply font-semibold text-textColor2;
+                        }
+                    }
+                    & .type {
+                        @apply font-mono font-semibold text-textColor6 leading-130;
+                        background: var(--backgroundColorDonationsFormSelected);
+                        @apply border-1;
+                        border-color: var(--borderColorContributionTasksTag);
+                        & .c-icon {
+                            height: 15px;
+                            width: 15px;
+
+                            @apply mr-6 filter-textColor6;
+                        }
+                    }
+                }
+            }
+            & .tags {
+                @apply md:flex hidden items-center;
+                @apply ml-auto;
+
+                & > .knowledge-tag {
+                    transform: scale(0.8);
+                    transform-origin: 0 50%;
+                    @screen md {
+                        transform: unset;
+                    }
+                }
+
+                & > :not(.knowledge-tag):not(.size-tag) {
+                    @apply ml-16 md:ml-48;
+                }
+            }
+            & .external-link {
+                height: 16px;
+                width: 16px;
+                filter: var(--textColor6-filter);
+                @apply ml-140;
+            }
+        }
+        @screen sm {
+            .task {
+                overflow-wrap: initial;
+                hyphens: initial;
+            }
+        }
+    }
+    & .c-pagination {
+        @apply px-16 sm:px-24 py-16 mt-0;
+    }
+}

@@ -1,0 +1,19 @@
+@import "../styles";
+@import "./base";
+
+.c-exercise-tooltip {
+    @apply c-tooltip-base;
+    min-height: 124px;
+    min-width: 400px;
+    @apply grid place-items-center;
+
+    & .c-exercise-widget {
+        & .--action-icon {
+            @apply hidden;
+        }
+        & .--blurb {
+            max-width: 350px;
+            margin-left: -80px;
+        }
+    }
+}

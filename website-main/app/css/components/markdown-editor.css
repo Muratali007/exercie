@@ -1,0 +1,150 @@
+@import "../styles";
+
+/* editor toolbar height = 49px */
+/* 30x30[px] button + 9[px] top-bot padding + 1[px] top border = 49px */
+
+.c-markdown-editor {
+    --editor-toolbar-height: 49px;
+    @screen md {
+        min-width: 520px;
+    }
+
+    @apply flex flex-col relative;
+    @apply border-1 border-buttonBorderColor2 rounded-8;
+    @apply overflow-hidden;
+    /* TODO: Decide what to do with this */
+    & .editor-statusbar {
+        display: none;
+    }
+
+    &.--compressed {
+        height: 99px;
+        &:before {
+            content: "Add a comment";
+            /* 'pr-[100%]' increases touch area to open MD editor on mobile devices */
+            @apply py-12 pl-16 pr-[100%];
+            @apply whitespace-nowrap;
+            @apply text-16 leading-160 text-textColor7;
+            @apply absolute z-1;
+            top: 0;
+            left: 0;
+            cursor: text;
+        }
+        &:focus-within {
+            &:before {
+                @apply hidden;
+            }
+        }
+
+        & .CodeMirror-line {
+            visibility: hidden;
+        }
+    }
+
+    &.--expanded {
+        min-height: 320px;
+    }
+
+    & > *:first-child {
+        @apply flex flex-col flex-grow;
+    }
+
+    & .EasyMDEContainer {
+        @apply flex-grow h-arbitary;
+        @apply flex flex-col-reverse;
+
+        & .editor-toolbar {
+            .preview {
+                @apply relative border-0;
+                &::after {
+                    content: "Preview";
+                    font-family: "Poppins";
+                    @apply absolute text-12 font-medium -translate-y-[50%] top-[50%] left-[24px] px-8;
+                    @apply flex lg:hidden items-center h-[30px];
+                    border-radius: 0px 5px 5px 0px;
+                }
+
+                &.active {
+                    @apply bg-tabBackgroundColorSelected;
+                    &::after {
+                        @apply bg-tabBackgroundColorSelected;
+                    }
+                }
+            }
+
+            border-width: 0; /* Override default */
+            @apply border-t-1 border-borderColor5 rounded-none;
+            @apply items-center;
+
+            & button {
+                @apply mr-4;
+
+                &:hover {
+                    @apply border-0;
+                    @apply lg:bg-tabBackgroundColorSelected rounded-5;
+                }
+                &.active {
+                    @apply border-0;
+                    @apply lg:bg-tabBackgroundColorSelected rounded-5;
+                }
+            }
+        }
+
+        & .CodeMirror {
+            @apply flex-grow;
+
+            border: none;
+            @apply font-mono;
+            @apply bg-backgroundColorA;
+            @apply text-textColor1 text-15 leading-huge;
+            @apply pt-12 pb-0 px-16;
+
+            & .CodeMirror-scroll {
+                min-height: auto !important;
+            }
+            & .CodeMirror-lines,
+            & pre.CodeMirror-line,
+            & pre.CodeMirror-line-like {
+                @apply p-0;
+            }
+            & .cm-comment {
+                background: none;
+                border-radius: 0;
+            }
+            & .cm-header-1 {
+                @apply text-h4 text-18 font-bold;
+            }
+            & .cm-header-2 {
+                @apply text-h4 text-16 font-bold;
+            }
+            & .cm-header-3,
+            & .cm-header-4,
+            & .cm-header-5,
+            & .cm-header-6 {
+                @apply text-15 font-normal;
+            }
+            & .cm-strong {
+                @apply text-textColor2 font-medium;
+            }
+
+            .CodeMirror-cursor {
+                @apply border-textColor1;
+            }
+        }
+    }
+    & .editor-footer {
+        @apply absolute;
+        bottom: 0;
+        right: 0;
+        height: var(--editor-toolbar-height);
+        @apply flex items-center justify-end mr-8;
+
+        & button {
+            @apply ml-12;
+            animation: fadeIn 0.2s forwards;
+        }
+    }
+    & .editor-preview {
+        @apply bg-backgroundColorA;
+    }
+}

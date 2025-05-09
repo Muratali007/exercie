@@ -1,0 +1,52 @@
+#page-profile-new {
+    @apply pb-80;
+    & .container {
+        max-width: 1000px;
+    }
+    & header {
+        @apply pt-40;
+        @apply flex flex-col items-center;
+
+        & .c-icon {
+            width: 128px;
+            height: 128px;
+        }
+        & h1 {
+            @apply text-h1 mb-16;
+        }
+        & hr.c-divider {
+            @apply mb-24;
+        }
+    }
+    & section.form-section {
+        @apply flex;
+        & form {
+            width: 540px;
+            @apply mr-64;
+
+            & .field {
+                @apply flex flex-col;
+                @apply mb-24;
+            }
+            & label {
+                @apply text-16 leading-160 text-textColor2 font-semibold;
+                @apply mb-8;
+            }
+            & input,
+            & textarea {
+                @apply w-100;
+            }
+            & textarea {
+                height: 102px;
+            }
+            & .note {
+                @apply text-textColor6 leading-160 mt-12;
+            }
+            & .character-count {
+                @apply text-textColor6 leading-160 font-semibold;
+                @apply mt-12;
+                @apply self-end;
+            }
+        }
+    }
+}

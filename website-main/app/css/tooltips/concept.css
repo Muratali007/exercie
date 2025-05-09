@@ -1,0 +1,97 @@
+@import "../styles";
+@import "./base";
+
+.c-concept-tooltip {
+    @apply shadow-lg rounded-8 py-20 px-24 bg-backgroundColorA;
+    @apply relative z-tooltip;
+
+    width: 460px;
+
+    /* TODO: add fade in transition for opacity */
+
+    & .header {
+        @apply flex items-center mb-12;
+
+        & .c-concept-icon {
+            @apply mr-16;
+        }
+
+        & .summary {
+            @apply flex-grow;
+
+            & .title {
+                @apply flex items-center;
+
+                & .name {
+                    @apply text-h5 mr-8;
+                }
+                & .in {
+                    @apply mr-8;
+                    @apply text-textColor2;
+                }
+                & .c-track-icon {
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+            & .num-exercises {
+                @apply text-15 leading-160 font-medium text-textColor6;
+            }
+        }
+        & .c-exercise-status-tag {
+            @apply ml-32;
+        }
+    }
+    & .blurb {
+        @apply text-15 leading-160 text-textColor6;
+    }
+
+    & .info {
+        @apply flex items-center;
+        @apply leading-150;
+        @apply mt-16;
+        & > .icon,
+        & > .c-icon {
+            height: 24px;
+            width: 24px;
+            @apply mr-12;
+        }
+        & .icon {
+            @apply grid place-items-center;
+            @apply rounded-100;
+            & .c-icon {
+                width: 12px;
+                height: 12px;
+                @apply filter-textColor6;
+            }
+        }
+    }
+
+    & .locked {
+        @apply text-textColor6 font-semibold;
+        & .icon {
+            @apply bg-lockedColor;
+            & .c-icon {
+                @apply filter-textColor6;
+            }
+        }
+    }
+    & .available {
+        @apply text-textColor1 font-semibold;
+        & .icon {
+            @apply shadow-none;
+        }
+    }
+    & .learnt {
+        @apply text-textColor1 font-semibold;
+        & .icon {
+            @apply bg-black;
+            & .c-icon {
+                filter: var(--white-filter);
+            }
+        }
+    }
+    & .mastered {
+        @apply text-textColor1 font-semibold;
+    }
+}

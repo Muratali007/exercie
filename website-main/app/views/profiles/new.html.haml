@@ -1,0 +1,8 @@
+#page-profile-new
+  .sm-container.container
+    %header
+      = graphical_icon "new-profile", category: 'graphics'
+      %h1 Create your public profile
+      %hr.c-divider
+
+    = render ReactComponents::Profile::NewProfileForm.new

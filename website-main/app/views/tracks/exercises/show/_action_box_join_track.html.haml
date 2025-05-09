@@ -1,0 +1,16 @@
+- track = user_track.track
+.join-box
+  .icons= track_icon track
+  %h3
+    Ready to start #{exercise.title}?
+  %p.mb-12
+    Join the #{track.title} track with
+    - if track.course?
+      = link_to "#{user_track.num_concepts} #{'concept'.pluralize(user_track.num_concepts)}", track_concepts_path(track)
+      and
+    = link_to "#{user_track.num_exercises} #{'exercise'.pluralize(user_track.num_exercises)}", track_exercises_path(track)
+    ready for you to dig into!
+
+  .buttons
+    = button_to "Join the #{track.title} track", join_track_path(track), method: :post, class: "btn-primary btn-m"
+    = link_to "See all #{track.title} exercises", track_exercises_path(track), class: 'btn-secondary btn-m'

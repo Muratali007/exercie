@@ -1,0 +1,662 @@
+@import "../../styles";
+
+.c-mentor-discussion {
+    --header-height: 68px;
+    --footer-height: 80px;
+
+    @apply flex fixed;
+    width: 100%;
+    height: 100%;
+
+    & .--split-lhs,
+    #panel-code {
+        overflow: hidden;
+        height: 100%;
+
+        @apply flex flex-col items-stretch bg-backgroundColorA;
+
+        & .discussion-header {
+            height: var(--header-height);
+            width: 100%;
+            @apply bg-backgroundColorA;
+
+            @apply flex items-center pl-8 pr-24 border-b-1 border-borderColor6;
+
+            & .close-btn {
+                @apply flex;
+                @apply p-16;
+                @apply mr-8;
+                & .c-icon {
+                    height: 24px;
+                    width: 24px;
+                    @apply filter-textColor6;
+                }
+            }
+            & .c-track-icon {
+                height: 42px;
+                width: 42px;
+                @apply mr-12;
+            }
+            & .c-exercise-icon {
+                height: 48px;
+                width: 48px;
+                @apply mr-16;
+            }
+            & .student {
+                @apply flex-grow flex items-center;
+                & .c-avatar {
+                    height: 48px;
+                    width: 48px;
+                    @apply mr-16;
+                }
+                & .info {
+                    @apply flex flex-col;
+                    & .handle {
+                        @apply font-medium text-16 text-textColor1 leading-huge;
+                    }
+
+                    & .exercise {
+                        @apply text-14 text-textColor6 leading-regular;
+                    }
+                }
+            }
+            & .info-for-student {
+                @apply flex-grow;
+                @apply text-14 leading-150 text-textColor6;
+                strong {
+                    @apply font-medium text-textColor1;
+                }
+                & .exercise-title {
+                    @apply text-16 font-medium text-textColor1;
+                }
+            }
+            & .finish-button {
+            }
+            & .finished {
+                @apply flex items-center;
+                @apply text-16 leading-170 font-semibold text-textColor2;
+                @apply ml-56;
+
+                & .c-icon {
+                    height: 24px;
+                    width: 24px;
+                    @apply mr-16;
+                }
+            }
+        }
+        & .deleted {
+            @apply py-32 text-16 text-textColor6 text-center;
+        }
+        & .c-iterations-footer {
+            @apply mt-auto;
+            & .link-button {
+                @apply ml-auto;
+                @apply px-8 py-4;
+                @apply rounded-5 shadow-xsZ1;
+
+                & .c-icon {
+                    height: 21px;
+                    width: 21px;
+                }
+            }
+        }
+
+        & .iteration-header {
+            @apply py-8 px-24;
+            @apply border-b-1 border-borderColor6;
+            @apply flex items-center;
+
+            & .--idx .--dot {
+                @apply hidden;
+            }
+
+            & > .download-btn,
+            & > .c-copy-text-to-clipboard {
+                @apply border-borderColor6 shadow-xsZ1 ml-16;
+                @apply w-auto;
+                @apply py-0 px-12;
+                height: 40px;
+                & .c-icon {
+                    @apply m-0;
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+        }
+
+        .iteration-header.mobile {
+            @apply px-12;
+            .close-btn {
+                @apply mr-24 ml-12;
+                .c-icon {
+                    height: 24px;
+                    width: 24px;
+                    @apply filter-textColor6;
+                }
+            }
+        }
+
+        & .c-results-zone {
+            @apply flex-grow h-arbitary;
+            & .c-iteration-pane {
+                height: 100%;
+                & .c-code-pane pre {
+                    @apply w-100;
+                }
+            }
+        }
+    }
+
+    & .--split-rhs {
+        @apply flex flex-col;
+        @apply shadow-base bg-backgroundColorA;
+        z-index: 2;
+        height: 100%;
+        overflow: hidden;
+
+        & .comment-section {
+            @apply flex flex-col relative z-1;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0px 4px 24px 0px rgba(var(--shadowColorMain), 0.3);
+
+            @apply bg-backgroundColorA;
+
+            & .new-messages-button {
+                @apply absolute;
+                left: 24px;
+                right: 24px;
+                top: -54px;
+                width: calc(100% - 48px);
+                background: rgba(255, 211, 143, 0.95);
+
+                @apply flex items-center justify-center p-8;
+                @apply text-textColor3 font-semibold leading-paragraph;
+                @apply leading-paragraph;
+                @apply rounded-8;
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    @apply mr-16;
+                }
+            }
+
+            &.--lock {
+                @apply py-24 px-32;
+
+                & h2 {
+                    @apply text-h5 mb-8;
+                }
+                & p {
+                    @apply text-15 leading-160;
+                    @apply mb-16;
+                }
+                & button {
+                    @apply w-100 mb-12;
+                }
+                & .note {
+                    @apply text-p-small text-textColor6 text-center;
+                }
+            }
+
+            &.--comment {
+                @apply py-16 px-24;
+                & .c-markdown-editor {
+                    @apply mb-8 flex-grow;
+
+                    &.--expanded {
+                        min-height: 320px;
+                    }
+                }
+                & button.faux-input {
+                    @apply relative;
+                    @apply border-1 border-buttonBorderColor2 rounded-5;
+                    @apply mb-8 py-12 px-16;
+                    @apply text-16 leading-paragraph text-textColor6;
+                    @apply text-left;
+                }
+                & .note {
+                    @apply text-p-small text-textColor6;
+                    & a {
+                        @apply font-medium text-prominentLinkColor;
+                    }
+                }
+            }
+
+            & button.continuation-btn {
+                @apply w-100;
+                @apply text-15 leading-160 text-textColor2;
+                & strong {
+                    @apply font-medium;
+                }
+                & em {
+                    @apply not-italic font-medium;
+                    color: var(--c-prominent-link-color);
+                }
+            }
+        }
+
+        & > .tabs {
+            @apply flex lg:relative fixed z-menu;
+            @apply gap-24;
+            top: 0;
+            left: 0;
+            right: 0;
+            @apply lg:h-[var(--header-height)] h-auto;
+
+            @apply bg-backgroundColorA;
+            @apply shadow-sm;
+            @apply px-24 lg:pt-20 lg:pb-12 py-8;
+            @apply overflow-x-auto lg:overflow-x-visible;
+
+            & .c-tab {
+                height: 36px;
+                @apply mr-0;
+
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+        }
+
+        & .--tab-panel {
+            @apply flex-grow;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        #panel-discussion.mobile,
+        #panel-code.mobile,
+        #panel-scratchpad.mobile,
+        #panel-guidance.mobile {
+            @apply lg:mt-0 mt-52;
+        }
+
+        & #panel-discussion {
+            /* Specify this again for the student view
+             * where we don't use tabs so can't rely on tab-panel */
+            @apply flex-grow;
+            overflow-y: scroll;
+            @apply pb-28;
+
+            & .student-info,
+            & .mentor-info {
+                @apply bg-backgroundColorA shadow-xsZ1;
+                @apply flex flex-col;
+
+                @apply py-16 px-24;
+
+                .track-objectives {
+                    @apply border-t-1 border-borderColor6;
+                    @apply mt-20 pt-12;
+                    &:open {
+                        .--summary-inner {
+                            @apply text-textColor2;
+                        }
+                    }
+                    p {
+                        @apply mt-4 text-14 leading-150;
+                    }
+                    .--summary-inner {
+                        @apply flex items-center;
+                        @apply font-semibold text-textColor6 leading-150;
+                        .c-icon {
+                            height: 14px;
+                            width: 14px;
+                            @apply ml-12;
+                        }
+                    }
+                }
+
+                & .info {
+                    @apply flex-grow;
+                }
+                & .subtitle {
+                    @apply text-textColor6 leading-paragraph mb-6;
+                }
+                & .handle-block {
+                    @apply flex items-center mb-6;
+                    & .handle {
+                        @apply text-h5 mr-12;
+                    }
+                }
+                & .name {
+                    @apply text-16 text-textColor6 font-medium leading-regular;
+                    &:not(:last-child) {
+                        @apply mb-6;
+                    }
+                }
+                & .bio {
+                    @apply text-15 leading-150;
+                    & .flags {
+                        @apply ml-8;
+                    }
+                }
+                & .options {
+                    @apply flex items-center mt-20;
+
+                    & .button-wrapper {
+                        @apply flex;
+                        width: 173px;
+                        height: 36px;
+                        @apply mr-24;
+
+                        & button {
+                            @apply flex-grow text-textColor6;
+                        }
+
+                        & button.unfavorite-button {
+                            @apply border-orange;
+                            @apply bg-lightOrange;
+                            @apply text-orange;
+                            & .c-icon {
+                                filter: var(--orange-filter);
+                            }
+                            &.hover {
+                                @apply text-red;
+                                @apply border-red;
+                                @apply bg-lightRed;
+                            }
+                        }
+                    }
+                    & .previous-sessions {
+                        @apply flex items-center;
+                        @apply font-semibold text-textColor6 leading-huge;
+                        & .c-icon {
+                            height: 14px;
+                            width: 14px;
+                            @apply ml-12;
+                            @apply filter-textColor6;
+                        }
+                    }
+                }
+                & .c-avatar {
+                    height: 64px;
+                    width: 64px;
+                    @apply ml-16;
+                }
+            }
+
+            & .finished-wizard.timeline-entry,
+            & .student-review.timeline-entry {
+                @apply pt-24;
+
+                &:before {
+                    height: 30px;
+                    bottom: auto;
+                }
+
+                & > .--details {
+                    & h3 {
+                        @apply text-h5;
+                        @apply pb-12 mb-12;
+                        @apply border-b-1 border-borderColor6;
+                    }
+                    & p {
+                        @apply text-p-base font-medium;
+                        @apply mb-12;
+                    }
+                }
+            }
+
+            & .student-review.timeline-entry {
+                & p {
+                    & strong {
+                        @apply block font-semibold text-textColor2;
+                    }
+                }
+            }
+            & .finished-wizard.timeline-entry {
+                & .--step {
+                    & .buttons {
+                        @apply flex items-center;
+                        & button {
+                            @apply mr-12;
+                        }
+                    }
+                }
+            }
+        }
+        & #panel-scratchpad {
+            &[hidden] {
+                @apply hidden;
+            }
+            @apply flex flex-col;
+            @apply py-24 px-20;
+            & > .c-introducer {
+                @apply mb-20;
+            }
+            & .title {
+                @apply flex items-center;
+                @apply leading-160;
+
+                & strong {
+                    @apply font-medium text-textColor3;
+                    @apply mx-4;
+                }
+                & .c-track-icon {
+                    height: 32px;
+                    width: 32px;
+                    @apply mx-8;
+                }
+            }
+            & .c-markdown-editor {
+                @apply flex-grow;
+            }
+        }
+        & #panel-guidance {
+            @apply py-16 px-24;
+
+            & .exemplar-files {
+                & .filename {
+                    @apply border-1 border-borderColor5;
+                    @apply bg-backgroundColorE;
+                    @apply text-15 font-mono font-semibold;
+                    @apply py-4 px-20;
+                    border-radius: 5px 5px 0 0;
+                }
+                & .filename + pre {
+                    @apply border-t-0;
+                    border-radius: 0 0 5px 5px;
+                }
+            }
+        }
+
+        & .mentoring-request-section {
+            @apply py-24;
+            @apply overflow-auto;
+
+            & .direct,
+            & .c-mentoring-request-form {
+                @apply px-24;
+            }
+            & .direct {
+                @apply mb-16;
+                @apply pb-16;
+                @apply border-b-1 border-borderColor6;
+
+                & h3 {
+                    @apply text-h6;
+                    @apply mb-8;
+
+                    & a {
+                        @apply text-prominentLinkColor;
+                    }
+                }
+            }
+        }
+        & #panel-discussion.mentoring-requested-section {
+            @apply pb-0;
+            @apply relative overflow-hidden;
+            @apply flex flex-col;
+
+            & .content {
+                @apply flex-grow;
+                overflow-y: scroll;
+                @apply pt-16 pb-32;
+            }
+
+            & .status {
+                @apply flex items-center;
+                background: var(--backgroundColorMentoringRequestedStatusInfo);
+                @apply rounded-8;
+                @apply py-12 px-16 mx-24;
+
+                & .info {
+                    @apply flex-grow;
+                    & h3 {
+                        @apply font-semibold leading-170;
+                        color: var(--textColorMentoringRequestedStatusInfo);
+                    }
+                    & p {
+                        @apply font-medium text-textColor6 leading-150;
+                    }
+                }
+                & button {
+                    @apply text-prominentLinkColor font-semibold;
+                }
+            }
+            & .placeholder {
+                @apply flex items-center;
+                @apply py-28 mx-24;
+
+                & .info {
+                    @apply flex-grow;
+                }
+                & .title {
+                    @apply flex items-center;
+                    @apply mb-6;
+                }
+                & .name,
+                & .rep,
+                & .desc {
+                    @apply rounded-100;
+                    opacity: 0.5;
+                    height: 24px;
+                }
+                & .name {
+                    width: 225px;
+                    @apply bg-gray;
+                    @apply mr-8;
+                }
+                & .rep {
+                    width: 32px;
+                    @apply bg-anotherPurple;
+                }
+
+                & .desc {
+                    width: 160px;
+                    @apply bg-borderLight;
+                }
+
+                & .avatar {
+                    height: 64px;
+                    width: 64px;
+                    @apply bg-backgroundColorD rounded-circle;
+                    @apply grid place-items-center;
+
+                    & .c-icon {
+                        height: 28px;
+                        width: 28px;
+                        color: #6d6986;
+                    }
+                }
+            }
+            & .waiting-box {
+                @apply py-16 px-24 mx-24 mt-16;
+                @apply border-1 border-borderColor6 rounded-8;
+                @apply shadow-sm;
+
+                & h3 {
+                    @apply text-textColor6 font-medium text-16 leading-170;
+                }
+                & h4 {
+                    @apply text-h5 mb-6;
+                }
+
+                & p {
+                    @apply text-p-small;
+                    & a {
+                        @apply inline-flex items-center;
+                        @apply text-prominentLinkColor font-medium;
+                        & .c-icon {
+                            width: 12px;
+                            height: 12px;
+                            @apply ml-8 filter-prominentLinkColor;
+                        }
+                    }
+                }
+
+                & .videos {
+                    @apply mt-16 pt-8;
+                    @apply border-t-1 border-borderColor6;
+
+                    & .video {
+                        @apply flex items-center;
+                        @apply py-12 px-16;
+                        &:hover {
+                            @apply bg-backgroundColorE;
+                        }
+                        & .img {
+                            @apply flex-shrink-0;
+                            height: 48px;
+                            width: 85px;
+                            @apply rounded-8;
+                            @apply mr-20;
+                            background-color: lightgray;
+                            background-size: cover;
+                            background-position: center;
+                        }
+                        & .info {
+                            @apply flex-grow overflow-hidden;
+                            & .title {
+                                @apply text-h6 mb-4 truncate;
+                            }
+                            & .date {
+                                @apply font-medium leading-160 text-textColor6;
+                            }
+                        }
+                        & > .c-icon {
+                            height: 16px;
+                            width: 16px;
+                            @apply filter-textColor6;
+                            @apply ml-20;
+                        }
+                    }
+                }
+            }
+            & .direct {
+                box-shadow: 0px 4px 24px 0px rgba(var(--shadowColorMain), 0.3);
+
+                @apply px-24 py-16 bg-backgroundColorA;
+
+                & h3 {
+                    @apply text-h6 mb-4;
+                }
+                & p {
+                    @apply text-p-small mb-12;
+                }
+            }
+        }
+        & .editor-error {
+            @apply text-darkRed font-medium;
+            @apply mb-12;
+        }
+    }
+
+    &.code-tagger {
+        input {
+            all: unset;
+        }
+        .creatable-select-component {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .--split-rhs {
+            @apply overflow-scroll;
+        }
+    }
+}

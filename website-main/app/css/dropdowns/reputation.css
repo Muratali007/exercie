@@ -1,0 +1,81 @@
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.c-reputation-dropdown {
+    width: 100%;
+    max-width: 500px;
+    @apply relative z-dropdown;
+
+    & ul {
+        @apply shadow-lg rounded-8 bg-backgroundColorA;
+        @apply py-12 px-16;
+
+        & .token {
+            @apply flex items-center;
+            @apply py-8 px-16;
+
+            &:hover {
+                @apply bg-backgroundColorD;
+            }
+
+            & .reason-icon {
+                height: 32px;
+                width: 32px;
+                @apply mr-20;
+                @apply self-start;
+            }
+            & .content {
+                @apply flex-grow mr-16;
+                & .description {
+                    @apply text-15 leading-150;
+                    & strong {
+                        @apply font-medium;
+                    }
+                }
+
+                & .earned-on {
+                    @apply text-14 text-textColor6 leading-160;
+                }
+            }
+            & .c-reputation {
+                @apply mr-24;
+            }
+            & .indicator {
+                height: 8px;
+                width: 8px;
+                @apply flex-shrink-0 rounded-circle mr-24;
+                background: var(--backgroundColorNotificationsCount);
+                opacity: 0;
+                transition: opacity 0.8s ease-out;
+
+                &.unseen {
+                    opacity: 1;
+                }
+            }
+
+            & .action-icon {
+                height: 16px;
+                width: 16px;
+                @apply filter-textColor6;
+            }
+        }
+        & .c-prominent-link {
+            @apply mt-12;
+            @apply px-16 py-8;
+            color: var(--backgroundColorNotificationsUnreadDot);
+            .c-icon {
+                filter: var(--iconFilterNotificationsProminentLink);
+            }
+
+            &:hover {
+                @apply bg-backgroundColorD;
+            }
+        }
+    }
+}

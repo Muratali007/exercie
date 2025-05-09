@@ -1,0 +1,151 @@
+@import "../styles";
+
+#page-journey {
+    @apply bg-darkThemeBackgroundColor;
+
+    & header.hero {
+        @apply mb-4;
+        @apply relative;
+
+        & .background {
+            @apply absolute overflow-hidden;
+            @apply flex justify-end;
+            @apply bg-cover;
+            background-image: url("hero-journey.svg");
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            & .bottom {
+                @apply absolute;
+                height: 180px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                background: linear-gradient(
+                    180deg,
+                    rgba(40, 35, 57, 0) 0%,
+                    #282339 100%
+                );
+            }
+        }
+
+        & .content {
+            @apply relative;
+            @apply flex flex-col items-center;
+            @apply px-32 pt-32;
+        }
+
+        & .privacy {
+            top: 32px;
+            right: 32px;
+            @apply absolute flex flex-col;
+            & .private {
+                @apply text-textColor1NoDark;
+                @apply flex self-end;
+                @apply py-8 px-16 mb-12 rounded-100 bg-white;
+                @apply font-medium text-15 leading-paragraph;
+
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    @apply mr-12;
+                    @apply self-center filter-textColor1NoDark;
+                }
+            }
+            & .explanation {
+                @apply text-textColor6NoDark text-16 font-medium leading-huge;
+            }
+        }
+
+        & .pathway-icon {
+            @apply mt-32 mb-8;
+            height: 64px;
+            width: 64px;
+            @apply filter-textColor6NoDark;
+        }
+        & h1 {
+            @apply text-64 leading-tight text-center font-bold text-textColor1NoDark;
+            @apply mb-8;
+        }
+        & .subtitle {
+            @apply text-22 leading-huge;
+            @apply mb-32;
+            @apply text-textColor6NoDark;
+        }
+
+        & .tracks {
+            @apply flex items-center;
+
+            /* Set a min-height for if there are no tracks */
+            min-height: 64px;
+            margin-bottom: 280px;
+
+            & .c-track-icon {
+                height: 64px;
+                width: 64px;
+                & + .c-track-icon {
+                    @apply ml-24;
+                }
+            }
+            & .more {
+                @apply text-15 text-lightBlue font-semibold;
+                @apply ml-24;
+            }
+        }
+        & .continue-indicator {
+            height: 64px;
+            width: 64px;
+            margin-bottom: 116px;
+            @apply text-veryLightBlue;
+            position: sticky;
+            bottom: 20px;
+        }
+    }
+    & .tabs {
+        @apply flex justify-center;
+        @apply py-24;
+        @apply border-unnamed13 border-b-1;
+        background: none;
+
+        & .c-tab {
+            height: 49px;
+            @apply text-18;
+            @apply mr-24 px-24 py-12;
+
+            & .c-icon {
+                height: 24px;
+                width: 24px;
+                @apply mr-16;
+                filter: var(--textColor6-filter);
+            }
+        }
+    }
+    & article {
+        min-height: calc(100vh - 145px);
+        @apply pt-48;
+
+        /* Make up for lack of footer margin */
+        padding-bottom: 200px;
+    }
+    & .c-search-bar {
+        @apply pb-24 mb-40;
+        @apply border-b-1 border-unnamed10;
+
+        & .--search {
+            @apply flex-grow;
+        }
+    }
+    & .results-title-bar {
+        @apply flex items-center;
+        @apply mb-32;
+
+        & h3 {
+            @apply flex-grow text-h3;
+        }
+    }
+    & .c-react-wrapper-journey-journey-page {
+        min-height: 400px;
+    }
+}

@@ -1,0 +1,32 @@
+- content_for :meta_title, "#{@track.title} key concepts on Exercism"
+- content_for :meta_description, "Learn and master #{@user_track.num_concepts} key concepts in #{@track.title} on Exercism."
+- content_for :canonical_url, track_concepts_url(@track)
+- require_stylesheet "track"
+
+#page-concepts-index
+  = render ViewComponents::Track::Header.new(@track, :concepts)
+
+  %article.content
+    - if @user_track.external?
+      .md-container.container.hidden.lg:block
+        %section.external-cta
+          = track_icon(@track)
+          .info
+            %h2 Master #{@user_track.num_concepts} key concepts in #{@track.title}
+            %p
+              All the concepts covered are explained in the context of language-specific paradigms and conventions.
+
+          = button_to join_track_path(@track), method: :post, class: "btn-primary btn-m" do
+            = graphical_icon(:plus)
+            Join The #{@track.title} Track
+
+    %header.page-header
+      .lg-container.container.flex-col.sm:flex-row
+        = graphical_icon "forest", css_class: 'graphic', category: 'graphics'
+        .info.text-center.sm:text-left
+          %h1 Your journey through #{@track.title}
+          %p Learn and master concepts to achieve fluency in #{@track.title}.
+
+    %section.concepts
+      .lg-container.container
+        = ReactComponents::Student::ConceptMap.new(@concept_map_data)

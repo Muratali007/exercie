@@ -1,0 +1,50 @@
+input:not([type="submit"]),
+.c-faux-input,
+textarea {
+    @apply shadow-sm;
+    @apply rounded-8 border-1 border-buttonBorderColor2;
+    @apply py-12 px-16;
+    @apply text-16 leading-160 text-textColor2;
+    @apply bg-inputBackgroundColor;
+
+    &::placeholder {
+        @apply text-textColor7;
+    }
+
+    &:focus,
+    &:focus-within {
+        @apply border-inputBorderColorFocus;
+        @apply bg-backgroundColorA;
+        @apply shadow-inputSelected;
+        @apply outline-none !important;
+    }
+}
+
+/* maybe make this default for all inputs */
+.portable-input {
+    &::placeholder {
+        @apply text-textColor6 !important;
+    }
+}
+
+.c-faux-input {
+    @apply flex items-center;
+    @apply overflow-hidden;
+    & .c-icon {
+        filter: var(--textColor2-filter);
+    }
+    & .icon {
+        @apply grid place-items-center flex-shrink-0;
+    }
+    & .c-icon,
+    & .icon {
+        width: 16px;
+        @apply mr-16;
+    }
+    & input {
+        @apply flex-grow;
+        @apply p-0 border-0 rounded-none;
+        @apply shadow-none bg-transparent  !important;
+        field-sizing: content;
+    }
+}

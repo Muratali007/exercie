@@ -1,0 +1,98 @@
+%header.c-profile-header
+  .lg-container
+    .info-section
+      = avatar(user)
+      .info
+        .heading
+          %h1= render ViewComponents::HandleWithFlair.new(user.handle, user.flair, size: :xlarge)
+          = render ViewComponents::Reputation.new(number_with_delimiter(user.reputation), flashy: true)
+          .tracks
+            - top_three_tracks.each do |track|
+              = track_icon track
+        .name= user.name
+        .details
+          - if user.location.present?
+            .location
+              = icon(:location, "Located in")
+              = user.location
+          - if user.pronouns.present?
+            .pronouns
+              = icon(:pronouns, "Pronouns")
+              = user.pronouns
+          .joined
+            = graphical_icon(:clock)
+            %time Joined #{user.created_at.strftime('%b %Y')}
+
+        - if user.bio.present?
+          = ReactComponents::Common::Expander.new(user.bio, button_text_compressed: "Read more", button_text_expanded: "Read less", class_name: "bio")
+
+      .badges-and-tags
+        - if user.revealed_badges.exists?
+          .header
+            = graphical_icon :badges
+            %h3 #{pluralize user.revealed_badges.count, 'badge'} collected
+            = render ViewComponents::ProminentLink.new("See all", badges_profile_path(user))
+          = link_to badges_profile_path(user) do
+            .badges
+              - user.featured_badges.each do |badge|
+                .c-badge
+                  .c-badge-medallion{ class: "--#{badge.rarity}" }
+                    = icon(badge.icon, "Badge: #{badge.name}")
+
+        - if header_tags.present? || user.founder?
+          .tags
+            - if user.founder?
+              .tag.founder
+                = graphical_icon :logo
+                .title Exercism Founder
+            - else
+              - header_tags.each do |tag|
+                %div{ class: tag[:class] }
+                  = graphical_icon tag[:icon]
+                  .title= tag[:title]
+
+
+    .tabs-section.scroll-x-hidden{ data: { scrollable_container: 'true' } }
+      = link_to profile_path(user), data: { scroll_into_view: (selected_tab == :summary ? ScrollAxis::X : nil) }, class: "c-tab-2 #{selected_tab == :summary ? 'selected' : ''}" do
+        = graphical_icon :overview
+        %span Summary
+
+      - if profile.contributions_tab?
+        = link_to contributions_profile_path(user), data: { scroll_into_view: (selected_tab == :contributions ? ScrollAxis::X : nil) }, class: "c-tab-2 #{selected_tab == :contributions ? 'selected' : ''}" do
+          = graphical_icon :contribute
+          %span Contributions
+
+      - if profile.solutions_tab?
+        = link_to solutions_profile_path(user), data: { scroll_into_view: (selected_tab == :solutions ? ScrollAxis::X : nil) }, class: "c-tab-2 #{selected_tab == :solutions ? 'selected' : ''}" do
+          = graphical_icon 'community-solutions'
+          %span Published Solutions
+
+      - if profile.testimonials_tab?
+        = link_to testimonials_profile_path(user), data: { scroll_into_view: (selected_tab == :testimonials ? ScrollAxis::X : nil) }, class: "c-tab-2 #{selected_tab == :testimonials ? 'selected' : ''}" do
+          = graphical_icon 'testimonials'
+          %span Testimonials
+
+      - if profile.badges_tab?
+        = link_to badges_profile_path(user), data: { scroll_into_view: (selected_tab == :badges ? ScrollAxis::X : nil) }, class: "c-tab-2 #{selected_tab == :badges ? 'selected' : ''}" do
+          = graphical_icon 'badges'
+          %span Badges
+
+      .external-links
+        - if profile.github.present?
+          = link_to "https://github.com/#{profile.github}" do
+            = graphical_icon "external-site-github"
+
+        - if profile.linkedin.present?
+          = link_to profile.linkedin do
+            = graphical_icon "external-site-linkedin"
+
+        -# TODO: Need a medium icon
+          - if profile.medium.present?
+            .link
+              = graphical_icon "external-site-medium", css_class: "site-icon"
+              .site-name Medium
+              = icon "external-link", "This is an external link", css_class: "action-icon"
+
+        - if profile.twitter.present?
+          = link_to "https://twitter.com/#{profile.twitter}" do
+            = graphical_icon "external-site-twitter"

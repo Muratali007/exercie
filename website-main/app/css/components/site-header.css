@@ -1,0 +1,372 @@
+body.namespace-tracks.controller-exercises.action-edit,
+body.namespace-mentoring.controller-discussions.action-show,
+body.namespace-mentoring.controller-representations.action-new,
+body.namespace-mentoring.controller-requests.action-show,
+body.namespace-mentoring.controller-automation.action-edit,
+body.namespace-tracks.controller-mentor_requests.action-new,
+body.namespace-tracks.controller-mentor_requests.action-show,
+body.namespace-tracks.controller-mentor_discussions.action-show,
+body.namespace-training_data.controller-code_tags_samples.action-show,
+body.namespace-bootcamp.controller-frontend.action-index,
+body.controller-user_onboarding.action-show,
+body.devise {
+    & #site-header,
+    & #site-footer {
+        display: none !important;
+    }
+}
+
+body.keyboard-navigation .nav-element:hover .nav-element-dropdown,
+body.keyboard-navigation .nav-element:hover .arrow {
+    @apply !hidden;
+}
+
+#site-header {
+    @apply bg-backgroundColorA border-b-1 border-borderColor7;
+    @apply sticky top-0;
+    @apply lg:static;
+
+    /* This is needed to raise the menu above other components */
+    @apply z-menu;
+
+    & .announcement-bar {
+        @apply py-8;
+        @apply text-aliceBlue font-semibold text-16 leading-160 text-center;
+        background: var(--backgroundColorAnnouncementBar);
+        & strong {
+            @apply text-lightGold mx-4 font-semibold;
+            @apply underline;
+        }
+
+        .lg-container {
+            @apply flex md:flex-row flex-col justify-center items-center;
+            .text-container {
+                @apply sm:flex flex-row;
+            }
+            .c-icon {
+                @apply sm:block hidden mr-8;
+                filter: none !important;
+                height: 24px;
+                width: 24px;
+            }
+        }
+    }
+
+    & .container {
+        /* Should be py-12 when other components have been added */
+        @apply flex items-center;
+        height: 64px;
+    }
+
+    & .exercism-link {
+        /* todo remove this */
+        @apply flex items-center gap-6;
+        @apply mr-32 flex-shrink-0;
+        @apply max-w-[45px] sm:max-w-[unset] lg:max-w-[32px] xl:max-w-[unset];
+        overflow: hidden;
+
+        & .c-icon {
+            @apply filter-textColor1;
+            height: 35px;
+            width: 194px;
+        }
+
+        @screen sm {
+            & .c-icon {
+                height: 24px;
+                width: 133px;
+            }
+        }
+    }
+
+    & .docs-search {
+        @apply hidden;
+
+        @apply flex-grow;
+        & input {
+            @apply bg-backgroundColorA;
+            @apply border-1 border-buttonBorderColor2;
+            width: 100%;
+            max-width: 540px;
+        }
+    }
+
+    & nav {
+        @apply hidden;
+        @apply lg:block lg:mr-16;
+
+        & ul {
+            @apply flex items-center;
+        }
+
+        & li {
+            &.selected {
+                & a {
+                    @apply text-textColor2;
+                }
+            }
+        }
+    }
+
+    & nav.signed-in {
+        @apply flex-grow;
+    }
+
+    & nav.signed-out {
+        @apply mr-auto;
+    }
+
+    & .user-section {
+        @apply flex justify-end items-center;
+        @apply ml-auto;
+
+        & .new-testimonial,
+        & .new-badge {
+            width: 28px;
+            height: 28px;
+            @apply mr-36;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            @apply hidden sm:block;
+        }
+        & .new-testimonial {
+            background-image: var(--newTestimonialIcon);
+        }
+        & .new-badge {
+            background-image: var(--newBadgeIcon);
+        }
+        & .c-notification {
+            @apply ml-8 mr-48;
+        }
+        & .c-react-wrapper-dropdowns-reputation {
+            @apply hidden xl:block lg:mr-48;
+        }
+        & .c-react-wrapper-dropdowns-dropdown {
+            min-width: 74px;
+        }
+    }
+    & .user-menu {
+        @apply flex items-center;
+
+        & .c-avatar {
+            height: 42px;
+            width: 42px;
+
+            @apply mr-16;
+            box-shadow: 0px 4px 16px 0px rgba(var(--shadowColorMain), 0.3);
+        }
+        & .c-icon {
+            height: 16px;
+            width: 16px;
+            @apply filter-textColor6;
+        }
+    }
+    & .user-menu-dropdown,
+    & .explore-menu-dropdown {
+        @apply bg-backgroundColorA shadow-lg rounded-8;
+        @apply px-16 pb-20;
+
+        & li.site-link {
+            @apply xl:hidden;
+        }
+
+        & li.new {
+            & a:after {
+                /* text-14px + pt-6 + pb-6 */
+                height: 26px;
+                content: "New";
+                @apply bg-[url("icons/sparkle-warning.svg")] bg-[length:12px] bg-no-repeat bg-[8px_center];
+                /* most of this is copied from site_header.rb L70 */
+                /* pl-24 = pl-8 + bg-size 12px + mr-4 */
+                @apply ml-8 text-warning bg-lightOrange py-6 pr-8 pl-24 rounded-100 font-semibold text-[13px] flex items-center;
+            }
+        }
+
+        & li.opt {
+            & a,
+            form.button_to button {
+                @apply flex;
+                @apply text-textColor6 font-medium;
+                @apply text-16 leading-huge;
+                @apply bg-backgroundColorA;
+                &:hover {
+                    @apply bg-backgroundColorD;
+                    @apply text-textColor5;
+                }
+            }
+        }
+    }
+    & .user-menu-dropdown {
+        min-width: 350px;
+
+        & li.profile {
+            & a {
+                @apply flex items-center;
+                @apply py-12 mb-4;
+
+                & .c-avatar {
+                    height: 42px;
+                    width: 42px;
+
+                    @apply mr-16;
+                    box-shadow: 0px 4px 16px 0px
+                        rgba(var(--shadowColorMain), 0.3);
+                }
+                & .info {
+                    @apply flex-grow;
+
+                    & .name {
+                        @apply text-18 leading-tight font-semibold text-textColor1;
+                    }
+                    & .handle {
+                        @apply text-16 leading-tight font-medium text-textColor6;
+                    }
+                }
+                & .c-icon {
+                    height: 16px;
+                    width: 16px;
+                    @apply ml-32 filter-textColor6;
+                }
+            }
+        }
+
+        & li.opt {
+            & a,
+            form.button_to button {
+                @apply px-12 py-4;
+                @apply lg:px-16 lg:py-8;
+            }
+            form.button_to button {
+                @apply w-100;
+            }
+        }
+
+        & li.site-link.donate {
+            @apply relative;
+            &:after {
+                content: "";
+                @apply border-b-1 border-borderColor7;
+                height: 1px;
+                bottom: -8px;
+                left: 0;
+                right: 0;
+                @apply absolute;
+            }
+            @apply mb-16;
+        }
+        & li.reputation {
+            @apply mb-20 xl:hidden;
+            & .c-primary-reputation {
+                @apply mr-0;
+            }
+        }
+    }
+    & .auth-buttons {
+        @apply flex items-center justify-end;
+        @apply ml-auto;
+
+        & a:nth-child(2) {
+            @apply ml-8;
+        }
+    }
+    & .auth-buttons a,
+    & .explore-menu {
+        height: 40px;
+        @apply text-15 lg:text-14;
+        @screen lg {
+            height: 32px;
+        }
+    }
+    & .explore-menu {
+        @apply px-16 ml-20;
+        @apply lg:hidden;
+
+        & .c-icon {
+            filter: var(--textColor2-filter);
+        }
+    }
+    & .explore-menu-dropdown {
+        @apply py-8;
+
+        & li.opt {
+            & a {
+                @apply px-16 py-8;
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        & .user-menu,
+        & .explore-menu {
+            /* This is the Popper dropdown, which doesn't have a class */
+            & + * {
+                position: fixed !important;
+                transform: none !important;
+                inset: 0px 0px 0px auto !important;
+                @apply flex;
+                & > ul {
+                    border-radius: 0px !important;
+                    @apply shadow-lgZ1 !important;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 410px) {
+        & .user-menu,
+        & .explore-menu,
+        & .auth-buttons a {
+            @apply px-10 text-14;
+        }
+        & .user-menu,
+        & .explore-menu {
+            @apply ml-12;
+        }
+    }
+    @media screen and (max-width: 340px) {
+        & .exercism-link {
+            @apply hidden;
+        }
+    }
+}
+
+body.controller-docs,
+body.namespace-docs {
+    @apply bg-backgroundColorB;
+
+    & #site-header {
+        @apply bg-backgroundColorA;
+        @apply border-0;
+
+        & .exercism-link {
+            @apply mr-32;
+        }
+
+        & .docs-search {
+            /* TODO: Readd once implemented */
+            /* @apply block; */
+        }
+    }
+}
+
+body.controller-about,
+body.namespace-about {
+    @apply bg-backgroundColorB;
+
+    & #site-header {
+        @apply bg-backgroundColorA;
+        @apply border-0;
+
+        & .exercism-link {
+            @apply mr-32;
+        }
+    }
+}
+
+body:not(.controller-pages.action-index) {
+    #site-header {
+        .auth-buttons + .c-react-wrapper-dropdowns-dropdown {
+            @apply min-w-[135px] lg:min-w-[0];
+        }
+    }
+}

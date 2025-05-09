@@ -1,0 +1,7 @@
+.c-notification-dot {
+    height: 8px;
+    width: 8px;
+
+    @apply rounded-circle;
+    background: var(--c-prominent-link-color);
+}

@@ -1,0 +1,73 @@
+@import "../styles";
+
+.m-publish-exercise.c-modal.--cover {
+    background: var(--modalBackgroundColor);
+
+    & .--modal-container {
+        padding: 50px 0;
+    }
+
+    & .--modal-content {
+        width: 100%;
+        max-width: 1120px;
+        min-height: auto;
+        @apply py-48 px-64 bg-backgroundColorA;
+        @apply shadow-lg;
+
+        @apply flex items-center;
+    }
+
+    & .content {
+        @apply flex-grow flex flex-col;
+
+        & .publish-icon {
+            height: 48px;
+            width: 48px;
+            @apply mb-24 filter-textColor6;
+        }
+        & .title {
+            @apply text-h1 mb-16;
+        }
+
+        & p {
+            @apply text-18 leading-huge mb-24;
+        }
+
+        & label {
+            @apply flex items-center mb-4;
+            @apply text-20;
+            @apply cursor-pointer;
+
+            & .label {
+                @apply text-18 font-semibold leading-huge;
+                @apply pl-16;
+            }
+        }
+        & label + label {
+            @apply mt-4;
+        }
+        & .iteration-selector {
+            height: 50px;
+            @apply ml-48 mb-16;
+            @apply flex items-center;
+            & label {
+                @apply mr-24 mb-0;
+                & .label {
+                    @apply text-16 font-medium;
+                }
+            }
+            & label + label {
+                @apply ml-8 mt-0;
+            }
+        }
+        & .confirm-button {
+            @apply mt-32;
+        }
+    }
+
+    & .decorative-image {
+        height: 300px;
+        width: 300px;
+        @apply ml-96 flex-shrink-0;
+    }
+}

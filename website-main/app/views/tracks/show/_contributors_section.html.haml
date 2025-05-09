@@ -1,0 +1,29 @@
+%section.contributors-section
+  %h2.text-h4
+    = graphical_icon(:contributors)
+    #{track.title} Contributors
+
+  %ol.showcase{ "aria-label": "Top contributors" }
+    - contributors[0..1].to_a.each do |contributor|
+      %li
+        = link_to profile_path(contributor), "aria-label": "View profile of #{contributor.handle}", "data-tooltip-type": "user", "data-endpoint": tooltip_profile_path(contributor.handle), "data-handle": contributor.handle, "data-placement": "left" do
+          = avatar(contributor)
+          .name= render ViewComponents::HandleWithFlair.new(contributor.name, contributor.flair, size: :base)
+          = render ViewComponents::Reputation.new(contributor.formatted_reputation)
+
+  %ol.faces{ "aria-label": "Other significant contributors" }
+    - contributors[2..13].to_a.each do |contributor|
+      %li
+        = avatar_link(contributor, "data-tooltip-type": "user", "data-endpoint": tooltip_profile_path(contributor.handle), "data-handle": contributor.handle, "data-placement": "left")
+
+    %li= link_to "See all", contributing_contributors_path(track_slug: track.slug), class: "all", "aria-label": "See all contributors for this track" # TODO
+
+  .cta
+    %h3
+      We
+      %span{ 'aria-label': "love" } 💙
+      our contributors
+    %p Exercism relies on open-source contributors to build our language tracks and mentor students.
+    = link_to "Contribute to the #{track.title} track ->", contributing_tasks_path(track_slug: track.slug)
+
+

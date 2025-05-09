@@ -1,0 +1,16 @@
+- return if track.key_features.empty?
+
+%section.features-section
+  .lg-container.container
+    .section-header
+      = graphical_icon "key-features", hex: true, css_class: "header-icon"
+      %h2 Key Features of #{track.title}
+      %hr.c-divider
+
+    .features
+      = track_icon(track)
+      - track.key_features.first(6).each.with_index do |feature, idx|
+        .feature{ class: "--#{idx}" }
+          = image_tag key_feature_icon_url(feature[:icon]), alt: "", class: "c-icon"
+          %h3.text-h4.mb-8= feature[:title]
+          %p.text-p-base.text-center= feature[:content]

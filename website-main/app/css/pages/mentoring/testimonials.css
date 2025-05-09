@@ -1,0 +1,130 @@
+#mentor-testimonials-page {
+    & article {
+        @apply rounded-8 shadow-lg bg-backgroundColorA;
+
+        & .c-search-bar {
+            @apply py-16 px-24;
+
+            & .c-single-select {
+                @apply ml-auto;
+            }
+            & .c-track-select {
+                @apply ml-0 mr-24;
+            }
+            & .--search {
+                width: 100%;
+                max-width: 450px;
+            }
+        }
+
+        & .no-testimonials {
+            @apply flex flex-col items-center;
+            @apply border-t-1 border-borderColor6;
+            @apply pt-48 pb-64;
+
+            & .c-icon {
+                height: 48px;
+                width: 48px;
+                @apply mb-12;
+                @apply filter-textColor6;
+            }
+            & h2 {
+                @apply text-18 leading-160 font-medium text-textColor6;
+                @apply mb-8;
+            }
+            & p {
+                @apply text-16 leading-160 text-textColor6;
+                @apply text-center;
+                max-width: 420px;
+            }
+        }
+        & .unrevealed-testimonial {
+            @apply py-12 px-24;
+            @apply flex items-center;
+            @apply bg-backgroundColorF;
+            @apply border-b-1 border-gradient;
+
+            /* Raise this above the normal rows */
+            margin-bottom: -1px;
+            position: relative;
+
+            & .info .student {
+                @apply font-semibold;
+            }
+
+            & time {
+                width: 120px;
+                @apply text-textColor2 text-right;
+            }
+        }
+
+        & .testimonial {
+            @apply border-t-1 border-borderColor6;
+            @apply flex items-center;
+
+            & a {
+                @apply flex-grow;
+                @apply py-12 px-24;
+                @apply flex items-center;
+            }
+            & .options-button {
+                @apply py-12 px-24;
+                @apply border-l-1 border-borderColor6;
+
+                .c-icon {
+                    @apply filter-textColor6;
+                }
+            }
+        }
+        & .testimonial,
+        & .unrevealed-testimonial {
+            @apply flex-grow;
+
+            & .c-track-icon {
+                width: 32px;
+                height: 32px;
+                @apply mr-24;
+            }
+            & .c-avatar {
+                height: 42px;
+                width: 42px;
+                @apply mr-16;
+            }
+
+            & .info {
+                @apply flex flex-col mr-auto;
+                & .student {
+                    @apply text-16 text-textColor2 font-medium leading-170;
+                }
+                & .exercise {
+                    @apply text-14 text-textColor6 leading-150;
+                    white-space: nowrap;
+                }
+            }
+            & .new {
+                background: var(--backgroundColorMentorTestimonialsNew);
+                color: var(--textColorMentorTestimonialsNew);
+                @apply ml-24;
+                @apply rounded-3;
+                @apply text-12 leading-140 font-mono font-bold uppercase;
+                @apply py-4 px-8;
+            }
+            & .content {
+                @apply text-15 leading-170 text-textColor6;
+                @apply truncate;
+                @apply ml-48 mr-40;
+                width: 520px;
+            }
+            & time {
+                @apply text-textColor6 leading-140 font-medium;
+                @apply ml-96;
+            }
+            & .c-icon.action-icon {
+                height: 16px;
+                width: 16px;
+                @apply ml-56;
+                @apply filter-textColor6;
+            }
+        }
+    }
+}

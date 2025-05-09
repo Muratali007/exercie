@@ -1,0 +1,32 @@
+- content_for :meta_title, "#{sanitize(@user.handle)}'s badges to Exercism".html_safe
+- content_for :meta_description, "Explore #{sanitize(@user.handle)}'s badges on Exercism, and see which ones you're missing yourself".html_safe
+- content_for :canonical_url, badges_profile_url(@user)
+- require_stylesheet "profile"
+
+#page-profile-badges
+  = render ViewComponents::Profile::Header.new(@user, @profile, :badges)
+
+  %article
+    .lg-container
+      = render ReactComponents::Common::Introducer.new(:profile_badges, "badges") do
+        %h2 Exercism members earn badges for doing cool stuff
+        %p Using Exercism is fun and rewarding - spontaneously earn badges during learning, mentoring and contributing on Exercism.
+
+      .summary
+        - %w[common rare ultimate legendary].each do |rarity|
+          - count = @rarities[rarity].to_i
+          .section{ class: rarity }
+            = graphical_icon "badge-indicator-#{rarity}"
+            .count= count
+            .info
+              %h3= rarity.titleize
+              .subtitle #{'badges'.pluralize(count)} owned
+
+      .badges
+        - @badges.each do |badge|
+          .c-badge
+            .c-badge-medallion{ class: "--#{badge.rarity}" }
+              = graphical_icon badge.icon
+            .--info
+              .--name= badge.name
+              .--desc= badge.description
